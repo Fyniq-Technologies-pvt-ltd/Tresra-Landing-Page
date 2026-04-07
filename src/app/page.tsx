@@ -1,19 +1,77 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
 
 export default function Home() {
+  const [showDialog, setShowDialog] = useState(false);
+
   return (
     <div className="text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+
+      {/* Coming Soon Dialog */}
+      {showDialog && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          onClick={() => setShowDialog(false)}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
+
+          {/* Dialog Card */}
+          <div
+            className="relative z-10 bg-white/80 backdrop-blur-2xl border border-white/60 rounded-[2rem] shadow-2xl shadow-primary/20 max-w-md w-full p-8 flex flex-col items-center text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Glow blob */}
+            <div className="absolute -top-16 left-1/2 -translate-x-1/2 w-48 h-48 bg-primary/20 rounded-full blur-[60px] pointer-events-none" />
+
+            {/* Icon */}
+            <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-[#a78bfa] flex items-center justify-center mb-5 shadow-lg shadow-primary/30">
+              <span className="material-symbols-outlined text-white text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>rocket_launch</span>
+            </div>
+
+            {/* Badge */}
+            <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase mb-4">
+              Coming Soon
+            </div>
+
+            <h2 className="text-2xl font-black text-on-surface mb-3 tracking-tight">
+              We&apos;re launching soon! 🚀
+            </h2>
+            <p className="text-sm text-on-surface-variant leading-relaxed mb-7">
+              Tresra is gearing up to go live. We&apos;re putting the finishing touches on something amazing — real-time barber booking, right at your fingertips.
+            </p>
+
+            {/* Divider */}
+            <div className="w-full h-px bg-outline-variant/20 mb-6" />
+
+            {/* Close button */}
+            <button
+              onClick={() => setShowDialog(false)}
+              className="w-full bg-primary text-white py-3 rounded-full font-bold text-sm shadow-lg shadow-primary/30 hover:opacity-90 active:scale-95 transition-all"
+            >
+              Got it, can&apos;t wait!
+            </button>
+
+            <button
+              onClick={() => setShowDialog(false)}
+              className="mt-3 text-xs text-on-surface-variant hover:text-primary transition-colors font-medium"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       {/* Top Navigation Bar (Anchor) */}
       <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-purple-200/15 shadow-sm">
         <div className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-          <img src="/logo.png" alt="Tresra Logo" className="h-10 w-auto" />
+          <a href="#hero"><img src="/logo.png" alt="Tresra Logo" className="h-10 w-auto" /></a>
           <div className="hidden md:flex gap-8 items-center">
-            <a className="text-purple-700 font-semibold border-b-2 border-purple-600 transition-all duration-300" href="#">Barbers</a>
-            <a className="text-slate-600 hover:text-purple-600 transition-colors" href="#">Services</a>
-            <a className="text-slate-600 hover:text-purple-600 transition-colors" href="#">Reviews</a>
-            <a className="text-slate-600 hover:text-purple-600 transition-colors" href="#">About</a>
+            <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#why-tresra">Why Tresra</a>
+            <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#how-it-works">How It Works</a>
+            <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#features">Features</a>
+            <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#reviews">Reviews</a>
           </div>
-          <button className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold scale-95 active:scale-90 transition-transform hover:opacity-80">
+          <button onClick={() => setShowDialog(true)} className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold scale-95 active:scale-90 transition-transform hover:opacity-80">
             Get Started
           </button>
         </div>
@@ -21,7 +79,7 @@ export default function Home() {
 
       <main className="overflow-x-hidden pt-20">
         {/* Hero Section */}
-        <section className="relative min-h-[1000px] flex items-center pt-12 pb-24 hero-gradient">
+        <section id="hero" className="relative min-h-[1000px] flex items-center pt-12 pb-24 hero-gradient">
           <div className="absolute inset-0 z-0 opacity-5 pointer-events-none flex items-center justify-center">
             <span className="text-[40rem] font-black select-none">T</span>
           </div>
@@ -30,9 +88,9 @@ export default function Home() {
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 bg-primary-container/20 px-4 py-2 rounded-full border border-primary-container/30">
                 <span className="flex -space-x-2">
-                  <img alt="barber 1" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR04G-lUvd365FlFzEcs5kIBGmyd1q7MpDgca_2pwAsQESXpiAyuIM13OrLJQIc-vCaR5cEdif4HYfuPp0bKhZKo5PbX25MZUuntQhgI1RKCAtmuLnUriNbSIjYhbhvUBMD3jo19gbvvs6ROBXXEnMUM9vXZa8g2IhOi3VmcC1KLi8th1BsXDMjMBZSb-5_0QbJwKKB_ur16V4GlqwMeXiuv2ibk5sJiJ_pPwkM8t7ZZE1X6y_c5I0KSEQBysnVNQ51VfmMiYLLx4"/>
-                  <img alt="barber 2" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1BPoMIwhO3g5VgCS_6xB3JH2qh-y-Qju2OutSt5sPv6uE3LPvkzmoMKv1VCYB83Nkfrm5Mpfkq1w2He4aG8kkxFLhmy-WOG9Gcgf2glyRWAf4obAwiJ3IFi5WApde6u-Yx4V-lfZDwzBmJR1UhfE1v4ExX7eYafgZgXklDiGZ4vT6s8SsXhvjy5JzIs440uhLC2oiSH3A0cpAuTLS1BxRuFS2rKSv9GMllcbZ264gHbGfvvutl-TEm9ZRllNPxY_K0vDCja6W-zc"/>
-                  <img alt="barber 3" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtrLKhVISWSED3ScdqMC1pIaKUhX5n-YwUc0hmW03vCO888Mb2s_VGV8UPNVwDIVTqTnu4uNbAIfTFO0COwkRWoLfQtXofqpEP1qfSGaBcYussKQJSeE-lucQE3QgnGbyTnxUjUr7Ib5l_ohvJhsFceKsbf03j2k_ykWuKzAvOAxah1o_mKg6IteoG5JOueExs8UE2UfrLcA-IxIJMrZ18X3IHpX7VsDjA-yTLBLXfqzEfx1wA4BBDkAqPmhSTHIHyueSDZ2d3lFM"/>
+                  <img alt="Reviewer 1" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer1.png"/>
+                  <img alt="Reviewer 2" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer2.png"/>
+                  <img alt="Reviewer 3" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer3.png"/>
                 </span>
                 <span className="text-sm font-bold text-primary">4.9/5 Rating</span>
               </div>
@@ -44,12 +102,12 @@ export default function Home() {
                 Stop gambling with your look. Browse top-rated barbers, see real-time availability, and secure your favorite stylist in seconds.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <button className="bg-primary text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                <button onClick={() => setShowDialog(true)} className="bg-primary text-white px-8 py-2 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
                   Book Now
                 </button>
-                <button className="bg-surface-container-lowest text-on-surface border border-outline-variant/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-surface-container transition-all">
+                <a href="#why-tresra" className="bg-surface-container-lowest text-on-surface border border-outline-variant/30 px-8 py-2 rounded-full font-bold text-lg hover:bg-surface-container transition-all inline-block">
                   Explore
-                </button>
+                </a>
               </div>
               <div className="flex items-center gap-6 pt-12 border-t border-outline-variant/10">
                 <div className="flex flex-col">
@@ -155,7 +213,7 @@ export default function Home() {
                 </div>
                 <p className="text-[11px] font-medium italic text-on-surface leading-tight mb-3">&quot;I always book Arjun on Tresra. No more waiting!&quot;</p>
                 <div className="flex items-center gap-2">
-                  <img alt="Reviewer" className="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR04G-lUvd365FlFzEcs5kIBGmyd1q7MpDgca_2pwAsQESXpiAyuIM13OrLJQIc-vCaR5cEdif4HYfuPp0bKhZKo5PbX25MZUuntQhgI1RKCAtmuLnUriNbSIjYhbhvUBMD3jo19gbvvs6ROBXXEnMUM9vXZa8g2IhOi3VmcC1KLi8th1BsXDMjMBZSb-5_0QbJwKKB_ur16V4GlqwMeXiuv2ibk5sJiJ_pPwkM8t7ZZE1X6y_c5I0KSEQBysnVNQ51VfmMiYLLx4" />
+                  <img alt="Reviewer" className="w-6 h-6 rounded-full" src="/assets/reviewer1.png" />
                   <span className="text-[10px] font-bold text-on-surface-variant">— Rahul S.</span>
                 </div>
               </div>
@@ -181,7 +239,7 @@ export default function Home() {
         </div> */}
 
         {/* Features Section - Responsive Redesign */}
-        <section className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-[#f8f5fe] via-[#fbfcff] to-[#f4effc]">
+        <section id="why-tresra" className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-[#f8f5fe] via-[#fbfcff] to-[#f4effc]">
           {/* Decorative Background Swirls */}
           <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-primary/5 rounded-[100%] blur-[120px] pointer-events-none -translate-y-1/2 translate-x-1/3"></div>
           <div className="absolute bottom-0 left-0 w-[420px] h-[420px] bg-secondary/5 rounded-[100%] blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/4"></div>
@@ -300,7 +358,7 @@ export default function Home() {
         </section>
 
         {/* Solution Section */}
-        <section className="py-16 md:py-24 hero-gradient relative overflow-hidden border-b border-outline-variant/10">
+        <section id="how-it-works" className="py-16 md:py-24 hero-gradient relative overflow-hidden border-b border-outline-variant/10">
           <div className="max-w-6xl mx-auto px-6 relative z-10">
             <div className="text-center mb-14">
               <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">Tresra fixes that.</h2>
@@ -330,7 +388,7 @@ export default function Home() {
         </section>
 
         {/* How It Works Section */}
-        <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-white relative overflow-hidden" id="how-it-works-steps">
           <div className="max-w-6xl mx-auto px-6 relative z-10">
             <div className="text-center mb-14">
               <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">How It Works</h2>
@@ -360,7 +418,7 @@ export default function Home() {
         </section>
 
         {/* Key Features Section */}
-        <section className="py-16 md:py-24 bg-[#fcf4ff] relative overflow-hidden">
+        <section id="features" className="py-16 md:py-24 bg-[#fcf4ff] relative overflow-hidden">
           <div className="max-w-6xl mx-auto px-6 relative z-10">
             <div className="text-center mb-14">
               <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">Key Features</h2>
@@ -396,7 +454,7 @@ export default function Home() {
         </section>
 
         {/* Social Proof Section */}
-        <section className="py-16 md:py-24 bg-white relative overflow-hidden">
+        <section id="reviews" className="py-16 md:py-24 bg-white relative overflow-hidden">
           <div className="max-w-6xl mx-auto px-6 relative z-10">
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-extrabold tracking-tight text-on-surface mb-3">What our community says</h2>
@@ -416,9 +474,9 @@ export default function Home() {
                   &quot;Finally I can book my barber directly. No more phone calls or guessing who is working.&quot;
                 </p>
                 <div className="flex items-center gap-3">
-                  <img alt="David M." className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1BPoMIwhO3g5VgCS_6xB3JH2qh-y-Qju2OutSt5sPv6uE3LPvkzmoMKv1VCYB83Nkfrm5Mpfkq1w2He4aG8kkxFLhmy-WOG9Gcgf2glyRWAf4obAwiJ3IFi5WApde6u-Yx4V-lfZDwzBmJR1UhfE1v4ExX7eYafgZgXklDiGZ4vT6s8SsXhvjy5JzIs440uhLC2oiSH3A0cpAuTLS1BxRuFS2rKSv9GMllcbZ264gHbGfvvutl-TEm9ZRllNPxY_K0vDCja6W-zc" />
+                  <img alt="Ajay Singh." className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="/assets/reviewer2.png" />
                   <div>
-                    <p className="font-bold text-on-surface text-sm">David M.</p>
+                    <p className="font-bold text-on-surface text-sm">Ajay Singh.</p>
                     <p className="text-xs text-on-surface-variant font-medium">Regular User</p>
                   </div>
                 </div>
@@ -436,9 +494,9 @@ export default function Home() {
                   &quot;No more waiting at salons. Total game changer. I walk in and my chair is ready instantly.&quot;
                 </p>
                 <div className="flex items-center gap-3">
-                  <img alt="Sarah K." className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR04G-lUvd365FlFzEcs5kIBGmyd1q7MpDgca_2pwAsQESXpiAyuIM13OrLJQIc-vCaR5cEdif4HYfuPp0bKhZKo5PbX25MZUuntQhgI1RKCAtmuLnUriNbSIjYhbhvUBMD3jo19gbvvs6ROBXXEnMUM9vXZa8g2IhOi3VmcC1KLi8th1BsXDMjMBZSb-5_0QbJwKKB_ur16V4GlqwMeXiuv2ibk5sJiJ_pPwkM8t7ZZE1X6y_c5I0KSEQBysnVNQ51VfmMiYLLx4" />
+                  <img alt="Divyam Kashyap." className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="/assets/reviewer3.png" />
                   <div>
-                    <p className="font-bold text-on-surface text-sm">Sarah K.</p>
+                    <p className="font-bold text-on-surface text-sm">Divyam Kashyap.</p>
                     <p className="text-xs text-on-surface-variant font-medium">Monthly Member</p>
                   </div>
                 </div>
@@ -448,7 +506,7 @@ export default function Home() {
         </section>
 
         {/* Final CTA Section */}
-        <section className="py-16 md:py-24 bg-surface-container-low relative overflow-hidden">
+        <section id="get-started" className="py-16 md:py-24 bg-surface-container-low relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
           <div className="max-w-6xl mx-auto px-6 relative z-10 text-center">
             <div className="inline-block p-1 px-3 mb-5 rounded-full bg-white/50 backdrop-blur-sm border border-primary/10">
@@ -461,8 +519,8 @@ export default function Home() {
                Join thousands of men who have upgraded their haircut experience. No more lines, no more waiting, just perfect style on your schedule.
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-              <button className="group bg-primary text-white px-8 py-4 rounded-full font-black text-lg shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
-                👉 Get Started with Tresra
+              <button onClick={() => setShowDialog(true)} className="group bg-primary text-white px-8 py-4 rounded-full font-black text-lg shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                Get Started with Tresra
               </button>
               <p className="text-xs font-bold text-on-surface-variant flex items-center gap-1.5">
                 <span className="material-symbols-outlined text-green-500 text-base" style={{ fontVariationSettings: "'wght' 700" }}>check_circle</span>
