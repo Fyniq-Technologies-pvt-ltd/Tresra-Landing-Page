@@ -167,7 +167,7 @@ export default function Home() {
         </section>
 
         {/* Trusted Logos */}
-        <div className="w-full bg-surface-container-low/50 py-12">
+        {/* <div className="w-full bg-surface-container-low/50 py-12">
           <div className="max-w-7xl mx-auto px-6">
             <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-on-surface-variant/50 mb-8">Featured on</p>
             <div className="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-30 grayscale contrast-125">
@@ -178,7 +178,7 @@ export default function Home() {
               <span className="text-2xl font-bold tracking-tighter">MINT</span>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Features Section - Responsive Redesign */}
         <section className="py-16 md:py-24 relative overflow-hidden bg-gradient-to-br from-[#f8f5fe] via-[#fbfcff] to-[#f4effc]">
