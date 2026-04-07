@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
+
+  --color-tertiary-fixed: #ff8db6;
+  --color-surface-container-high: #eedcff;
+  --color-error-dim: #a70138;
+  --color-inverse-surface: #15052a;
+  --color-surface-dim: #e3caff;
+  --color-tertiary-dim: #8d2954;
+  --color-secondary: #7144ab;
+  --color-on-secondary-container: #5b2e95;
+  --color-surface-container-low: #f8edff;
+  --color-error-container: #f74b6d;
+  --color-inverse-primary: #9a7bff;
+  --color-tertiary-container: #ff8db6;
+  --color-on-surface: #37274d;
+  --color-surface-container-highest: #e9d5ff;
+  --color-surface: #fcf4ff;
+  --color-on-error: #ffefef;
+  --color-on-primary-fixed-variant: #32008a;
+  --color-on-error-container: #510017;
+  --color-surface-container: #f2e2ff;
+  --color-on-secondary-fixed-variant: #65389f;
+  --color-on-primary-fixed: #000000;
+  --color-surface-variant: #e9d5ff;
+  --color-primary-fixed: #a98fff;
+  --color-on-background: #37274d;
+  --color-primary-container: #a98fff;
+  --color-on-primary-container: #280072;
+  --color-secondary-container: #e1c7ff;
+  --color-on-tertiary-fixed: #37001a;
+  --color-on-tertiary-container: #640335;
+  --color-surface-bright: #fcf4ff;
+  --color-on-tertiary: #ffeff2;
+  --color-tertiary-fixed-dim: #f57ca9;
+  --color-on-secondary: #faefff;
+  --color-surface-tint: #652fe7;
+  --color-on-tertiary-fixed-variant: #70103e;
+  --color-primary-fixed-dim: #9c7eff;
+  --color-primary-dim: #5819db;
+  --color-background: #fcf4ff;
+  --color-on-primary: #f7f0ff;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface-variant: #66547d;
+  --color-secondary-fixed-dim: #d6b6ff;
+  --color-outline-variant: #baa4d3;
+  --color-secondary-dim: #64379e;
+  --color-primary: #652fe7;
+  --color-outline: #826f9a;
+  --color-tertiary: #9c3660;
+  --color-on-secondary-fixed: #471580;
+  --color-inverse-on-surface: #a994c2;
+  --color-secondary-fixed: #e1c7ff;
+  --color-error: #b41340;
+
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-float-delayed: float 4.5s ease-in-out infinite 1s;
+  --animate-float-slow: float 6s ease-in-out infinite 0.5s;
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(101, 47, 231, 0.1);
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at 50% 50%, rgba(169, 143, 255, 0.15) 0%, rgba(252, 244, 255, 0) 70%);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
