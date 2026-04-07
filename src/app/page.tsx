@@ -214,7 +214,7 @@ export default function Home() {
                 <p className="text-[11px] font-medium italic text-on-surface leading-tight mb-3">&quot;I always book Arjun on Tresra. No more waiting!&quot;</p>
                 <div className="flex items-center gap-2">
                   <img alt="Reviewer" className="w-6 h-6 rounded-full" src="/assets/reviewer1.png" />
-                  <span className="text-[10px] font-bold text-on-surface-variant">— Rahul S.</span>
+                  <span className="text-[10px] font-bold text-on-surface-variant">— Ajay Singh.</span>
                 </div>
               </div>
 
