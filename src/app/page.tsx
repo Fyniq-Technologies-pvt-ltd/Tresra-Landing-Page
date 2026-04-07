@@ -476,7 +476,7 @@ export default function Home() {
                 <div className="flex items-center gap-3">
                   <img alt="Ajay Singh." className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="/assets/reviewer2.png" />
                   <div>
-                    <p className="font-bold text-on-surface text-sm">Ajay Singh.</p>
+                    <p className="font-bold text-on-surface text-sm">Vivek.</p>
                     <p className="text-xs text-on-surface-variant font-medium">Regular User</p>
                   </div>
                 </div>
