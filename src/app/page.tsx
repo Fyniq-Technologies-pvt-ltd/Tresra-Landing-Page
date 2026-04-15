@@ -342,10 +342,10 @@ export default function Home() {
                         <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                         <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                       </div>
-                      <p className="text-[11px] font-medium italic text-on-surface leading-tight mb-3">&quot;I always book Priya on Tresra. No more waiting!&quot;</p>
+                      <p className="text-[11px] font-medium italic text-on-surface leading-tight mb-3">&quot;I always book Dharam on Tresra. No more waiting!&quot;</p>
                       <div className="flex items-center gap-2">
                         <img alt="Reviewer" className="w-6 h-6 rounded-full" src="/assets/reviewer1.png" />
-                        <span className="text-[10px] font-bold text-on-surface-variant">— Sneha R.</span>
+                        <span className="text-[10px] font-bold text-on-surface-variant">— Ajay Singh.</span>
                       </div>
                     </div>
 
@@ -836,8 +836,8 @@ export default function Home() {
               </section>
 
               {/* Pricing Section */}
-              <section id="pricing" className="py-24 md:py-32 relative overflow-hidden bg-[#fcf4ff]">
-                {/* Background Glow */}
+              {/* <section id="pricing" className="py-24 md:py-32 relative overflow-hidden bg-[#fcf4ff]">
+                
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-full bg-gradient-to-b from-white via-[#faf5ff] to-[#fcf4ff] opacity-80 pointer-events-none"></div>
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-br from-[#f3e8ff]/60 via-[#fdf4ff]/40 to-transparent rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -854,7 +854,7 @@ export default function Home() {
                     </p>
                   </FadeUp>
 
-                  {/* Billing Toggle */}
+                 
                   <div className="flex justify-center mb-16">
                     <div className="bg-[#f0e6ff]/50 backdrop-blur-md p-1.5 rounded-full flex items-center border border-[#baa4d3]/20 shadow-inner">
                       <button className="bg-white text-[#37274d] px-6 py-2 rounded-full font-bold text-sm shadow-[0_2px_10px_rgba(101,47,231,0.1)] transition-colors">
@@ -869,7 +869,7 @@ export default function Home() {
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-5xl mx-auto">
 
-                    {/* Card 1: Essential */}
+                   
                     <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] hover:-translate-y-1 transition-transform duration-300 flex flex-col">
                       <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight">Essential</h3>
                       <p className="text-[13px] text-slate-500 font-medium leading-relaxed mb-8">Start discovering and booking instantly.</p>
@@ -889,7 +889,7 @@ export default function Home() {
                       </button>
                     </div>
 
-                    {/* Card 2: Plus */}
+                   
                     <div className="bg-gradient-to-br from-[#e4ccff] to-[#f6edff] border border-white p-8 rounded-[2rem] shadow-[0_15px_40px_rgb(101,47,231,0.15)] relative flex flex-col md:-translate-y-4">
                       <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#9254f3] text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-lg shadow-[#9254f3]/30">
                         Most Popular
@@ -913,7 +913,7 @@ export default function Home() {
                       </button>
                     </div>
 
-                    {/* Card 3: Pro */}
+                    
                     <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] hover:-translate-y-1 transition-transform duration-300 flex flex-col">
                       <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight">Pro</h3>
                       <p className="text-[13px] text-slate-500 font-medium leading-relaxed mb-8">The complete premium experience.</p>
@@ -936,11 +936,11 @@ export default function Home() {
 
                   </div>
                 </div>
-              </section>
+              </section> */}
 
-              {/* Mobile App Section */}
-              <section id="mobile-app" className="py-24 md:py-32 relative overflow-hidden bg-white">
-                {/* Faint T watermarks in grid pattern */}
+              
+              {/* <section id="mobile-app" className="py-24 md:py-32 relative overflow-hidden bg-white">
+                
                 <div className="absolute inset-0 pointer-events-none opacity-[0.02] flex flex-wrap content-start z-0 overflow-hidden">
                   {Array.from({ length: 40 }).map((_, i) => (
                     <div key={i} className="w-[20%] lg:w-[10%] aspect-square flex items-center justify-center">
@@ -951,7 +951,7 @@ export default function Home() {
 
                 <div className="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-                  {/* Left Content */}
+                  
                   <FadeUp className="flex-1 text-center lg:text-left">
                     <h2 className="text-4xl lg:text-[3.5rem] leading-[1.1] font-extrabold tracking-tight text-[#37274d] mb-6">
                       Control your <span className="text-[#652fe7]">grooming experience</span> from your pocket.
@@ -961,7 +961,7 @@ export default function Home() {
                     </p>
 
                     <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                      {/* App Store Button Mock */}
+                      
                       <button className="bg-white/90 backdrop-blur-md border border-[#baa4d3]/20 shadow-[0_8px_30px_rgb(146,84,243,0.08)] px-5 py-3 rounded-2xl flex items-center gap-3 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.12)] transition-all group">
                         <span className="text-3xl text-[#37274d]">
                           <svg viewBox="0 0 384 512" width="24" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
@@ -972,7 +972,7 @@ export default function Home() {
                         </div>
                       </button>
 
-                      {/* Google Play Button Mock */}
+                      
                       <button className="bg-white/90 backdrop-blur-md border border-[#baa4d3]/20 shadow-[0_8px_30px_rgb(146,84,243,0.08)] px-5 py-3 rounded-2xl flex items-center gap-3 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.12)] transition-all group">
                         <span className="text-3xl text-slate-700">
                           <svg viewBox="0 0 512 512" width="24" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" /></svg>
@@ -985,27 +985,27 @@ export default function Home() {
                     </div>
                   </FadeUp>
 
-                  {/* Right Content : The iPhone Mockup */}
+                  
                   <div className="flex-1 w-full flex justify-center lg:justify-end relative">
-                    {/* Phone Frame */}
+                   
                     <div className="relative w-[300px] sm:w-[320px] aspect-[390/844] bg-[#1a1a1a] rounded-[3.5rem] p-3 shadow-[0_30px_80px_rgba(30,10,60,0.15)] border-4 border-slate-800 z-20 overflow-hidden transform lg:rotate-2 hover:rotate-0 transition-transform duration-700">
-                      {/* Internal Screen wrapping app */}
+                      
                       <div className="bg-[#111116] w-full h-full rounded-[2.5rem] overflow-hidden relative flex flex-col">
-                        {/* Dynamic Island Mock */}
+                        
                         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[7rem] h-[1.75rem] bg-black rounded-full z-50"></div>
 
-                        {/* Custom Inserted UI Image */}
+                        
                         <img src="/mock-app.png" alt="Tresra Discover Salons App Interface" className="w-full h-full object-cover object-top z-0" />
                       </div>
                     </div>
 
-                    {/* Aesthetic Blobs behind phone */}
+                    
                     <div className="absolute top-1/4 -right-10 w-64 h-64 bg-gradient-to-bl from-[#dfc8ff]/60 to-[#fdf4ff]/20 blur-[80px] rounded-full z-10 pointer-events-none"></div>
                     <div className="absolute bottom-1/4 -left-10 w-64 h-64 bg-gradient-to-tr from-[#dfc8ff]/60 to-[#fcf4ff] blur-[80px] rounded-full z-10 pointer-events-none"></div>
                   </div>
 
                 </div>
-              </section>
+              </section> */}
 
               {/* Final CTA Section */}
               <section id="get-started" className="py-16 md:py-24 bg-surface-container-low relative overflow-hidden">
