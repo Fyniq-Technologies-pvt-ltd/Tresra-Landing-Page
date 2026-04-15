@@ -69,6 +69,7 @@ export default function Home() {
             <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#why-tresra">Why Tresra</a>
             <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#how-it-works">How It Works</a>
             <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#features">Features</a>
+            <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#categories">Categories</a>
             <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#reviews">Reviews</a>
           </div>
           <button onClick={() => setShowDialog(true)} className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold scale-95 active:scale-90 transition-transform hover:opacity-80">
@@ -88,25 +89,28 @@ export default function Home() {
             <div className="space-y-8">
               <div className="inline-flex items-center gap-2 bg-primary-container/20 px-4 py-2 rounded-full border border-primary-container/30">
                 <span className="flex -space-x-2">
-                  <img alt="Reviewer 1" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer1.png"/>
-                  <img alt="Reviewer 2" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer2.png"/>
-                  <img alt="Reviewer 3" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer3.png"/>
+                  <img alt="Reviewer 1" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer1.png" />
+                  <img alt="Reviewer 2" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer2.png" />
+                  <img alt="Reviewer 3" className="w-8 h-8 rounded-full border-2 border-surface shadow-sm object-cover" src="/assets/reviewer3.png" />
                 </span>
                 <span className="text-sm font-bold text-primary">4.9/5 Rating</span>
               </div>
               <h1 className="text-5xl lg:text-7xl font-extrabold text-on-surface leading-[1.1] tracking-tight">
-                Book Your Barber. <br />
+                Book Your Stylist. <br />
                 <span className="text-primary-dim">Not Just a Slot.</span>
               </h1>
               <p className="text-xl text-on-surface-variant max-w-lg leading-relaxed">
-                Stop gambling with your look. Browse top-rated barbers, see real-time availability, and secure your favorite stylist in seconds.
+                Discover top-rated salons, stylists, and grooming experts near you. Choose your professional. Pick your time. Walk in with zero waiting.
+              </p>
+              <p className="text-base text-on-surface-variant/80 max-w-lg leading-relaxed -mt-2 italic">
+                From haircuts to styling, grooming to self-care — everything, on your schedule.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
                 <button onClick={() => setShowDialog(true)} className="bg-primary text-white px-8 py-2 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
                   Book Now
                 </button>
                 <a href="#why-tresra" className="bg-surface-container-lowest text-on-surface border border-outline-variant/30 px-8 py-2 rounded-full font-bold text-lg hover:bg-surface-container transition-all inline-block">
-                  Explore
+                  Explore Services
                 </a>
               </div>
               <div className="flex items-center gap-6 pt-12 border-t border-outline-variant/10">
@@ -140,7 +144,7 @@ export default function Home() {
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500 mt-1.5 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
                 <div>
                   <p className="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Live Availability</p>
-                  <p className="text-sm font-bold">Arjun is available</p>
+                  <p className="text-sm font-bold">Priya is available</p>
                   <p className="text-[11px] text-primary font-medium">Today, 5:00 PM</p>
                 </div>
               </div>
@@ -154,7 +158,7 @@ export default function Home() {
                       <span className="material-symbols-outlined text-primary text-sm">home_work</span>
                     </div>
                     <div className="leading-tight">
-                      <p className="text-[11px] font-bold">The Fade Lounge</p>
+                      <p className="text-[11px] font-bold">The Glow Studio</p>
                       <p className="text-[9px] text-on-surface-variant">Koramangala, Bangalore</p>
                     </div>
                   </div>
@@ -163,8 +167,8 @@ export default function Home() {
                       <span className="material-symbols-outlined text-secondary text-sm">person</span>
                     </div>
                     <div className="leading-tight">
-                      <p className="text-[11px] font-bold">Arjun</p>
-                      <p className="text-[9px] text-on-surface-variant">Your Barber</p>
+                      <p className="text-[11px] font-bold">Priya</p>
+                      <p className="text-[9px] text-on-surface-variant">Your Stylist</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -211,10 +215,10 @@ export default function Home() {
                   <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                   <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 </div>
-                <p className="text-[11px] font-medium italic text-on-surface leading-tight mb-3">&quot;I always book Arjun on Tresra. No more waiting!&quot;</p>
+                <p className="text-[11px] font-medium italic text-on-surface leading-tight mb-3">&quot;I always book Priya on Tresra. No more waiting!&quot;</p>
                 <div className="flex items-center gap-2">
                   <img alt="Reviewer" className="w-6 h-6 rounded-full" src="/assets/reviewer1.png" />
-                  <span className="text-[10px] font-bold text-on-surface-variant">— Ajay Singh.</span>
+                  <span className="text-[10px] font-bold text-on-surface-variant">— Sneha R.</span>
                 </div>
               </div>
 
@@ -246,110 +250,110 @@ export default function Home() {
 
           <div className="max-w-[1100px] mx-auto px-6 relative z-10">
             <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
-              
+
               {/* Left Column (Text Content) */}
               <div className="w-full lg:w-[35%] flex flex-col items-start pt-4 lg:pt-8 shrink-0">
                 <div className="bg-[#ede8fc] text-[#6b47dc] px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase mb-6">
                   Relatable Pain
                 </div>
                 <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-on-surface mb-8 tracking-tight leading-[1.1]">
-                  Ever walked into <br className="hidden lg:block"/>
-                  a <span className="text-primary tracking-tight">salon</span> and:
+                  Ever walked into <br className="hidden lg:block" />
+                  a <span className="text-primary tracking-tight">salon or studio</span> and:
                 </h2>
-                
+
                 <ul className="space-y-6 mb-8 w-full">
                   <li className="flex items-center gap-4">
                     <div className="w-9 h-9 rounded-full bg-[#f0eaff] flex items-center justify-center shrink-0 shadow-sm border border-white/50">
-                       <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'wght' 300" }}>person</span>
+                      <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'wght' 300" }}>person</span>
                     </div>
-                    <span className="text-base font-bold text-slate-800 leading-snug">Your barber wasn&apos;t available</span>
+                    <span className="text-base font-bold text-slate-800 leading-snug">Your preferred stylist wasn&apos;t available</span>
                   </li>
                   <li className="flex items-center gap-4">
                     <div className="w-9 h-9 rounded-full bg-[#f0eaff] flex items-center justify-center shrink-0 shadow-sm border border-white/50">
-                       <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'wght' 300" }}>schedule</span>
+                      <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'wght' 300" }}>schedule</span>
                     </div>
-                    <span className="text-base font-bold text-slate-800 leading-snug">You had to wait for hours</span>
+                    <span className="text-base font-bold text-slate-800 leading-snug">You had to wait without clarity</span>
                   </li>
                   <li className="flex items-center gap-4">
                     <div className="w-9 h-9 rounded-full bg-[#f0eaff] flex items-center justify-center shrink-0 shadow-sm border border-white/50">
-                       <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'wght' 300" }}>block</span>
+                      <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'wght' 300" }}>block</span>
                     </div>
-                    <span className="text-base font-bold text-slate-800 leading-snug">You ended up with someone<br className="hidden md:block"/> you didn&apos;t want</span>
+                    <span className="text-base font-bold text-slate-800 leading-snug">You settled for someone<br className="hidden md:block" /> you didn&apos;t choose</span>
                   </li>
                 </ul>
-                
+
                 <p className="text-slate-500 text-base leading-relaxed mb-6">
-                  What should feel easy still feels chaotic. The system is broken because you lose time, control, and confidence all at once.
+                  Grooming should feel controlled. Not random. You deserve clarity before you even leave home.
                 </p>
-                
+
                 <div className="bg-[#ede8fc] text-[#6b47dc] px-5 py-2 rounded-full font-bold text-xs shadow-sm transition-transform hover:scale-105 cursor-pointer">
                   That&apos;s broken.
                 </div>
               </div>
-              
+
               {/* Right Column (Cards) */}
               <div className="w-full lg:w-[65%] flex flex-col gap-8 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full items-stretch">
-                  
+
                   {/* Card 1 */}
                   <div className="bg-white/70 backdrop-blur-xl rounded-[1.5rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white flex flex-col h-full relative group hover:-translate-y-1 transition-all duration-300">
-                     <div className="w-8 h-8 rounded-full bg-[#f0eaff] flex items-center justify-center mb-3 shrink-0">
-                        <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'wght' 300" }}>person</span>
-                     </div>
-                     <div className="mb-4 h-[120px] flex justify-center items-center relative w-full overflow-hidden rounded-xl bg-gradient-to-b from-transparent to-black/5 shrink-0">
-                        <img src="/assets1.png" alt="Barber missing visual" className="object-cover w-full h-full scale-[1.15] group-hover:scale-[1.20] transition-transform duration-500 origin-center mix-blend-multiply" />
-                     </div>
-                     <div className="flex flex-col flex-1">
-                       <h3 className="text-[1.1rem] font-extrabold text-slate-800 mb-2 leading-tight tracking-tight">Your barber<br className="hidden xl:block"/> wasn&apos;t available</h3>
-                       <p className="text-xs text-slate-500 leading-relaxed font-medium">You showed up expecting the person you trust, only to find out they were busy, off, or already booked.</p>
-                     </div>
+                    <div className="w-8 h-8 rounded-full bg-[#f0eaff] flex items-center justify-center mb-3 shrink-0">
+                      <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'wght' 300" }}>person</span>
+                    </div>
+                    <div className="mb-4 h-[120px] flex justify-center items-center relative w-full overflow-hidden rounded-xl bg-gradient-to-b from-transparent to-black/5 shrink-0">
+                      <img src="/assets1.png" alt="Barber missing visual" className="object-cover w-full h-full scale-[1.15] group-hover:scale-[1.20] transition-transform duration-500 origin-center mix-blend-multiply" />
+                    </div>
+                    <div className="flex flex-col flex-1">
+                      <h3 className="text-[1.1rem] font-extrabold text-slate-800 mb-2 leading-tight tracking-tight">Your preferred stylist<br className="hidden xl:block" /> wasn&apos;t available</h3>
+                      <p className="text-xs text-slate-500 leading-relaxed font-medium">You showed up expecting the professional you trust, only to find out they were busy, off, or already booked.</p>
+                    </div>
                   </div>
-                  
+
                   {/* Card 2 */}
                   <div className="bg-white/70 backdrop-blur-xl rounded-[1.5rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white flex flex-col h-full relative group hover:-translate-y-1 transition-all duration-300">
-                     <div className="w-8 h-8 rounded-full bg-[#f0eaff] flex items-center justify-center mb-3 shrink-0">
-                        <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'wght' 300" }}>schedule</span>
-                     </div>
-                     <div className="mb-4 h-[120px] flex justify-center items-center relative w-full overflow-hidden rounded-xl bg-gradient-to-b from-transparent to-black/5 shrink-0">
-                        <img src="/assets2.png" alt="Waiting visual" className="object-cover w-full h-full scale-[1.15] group-hover:scale-[1.20] transition-transform duration-500 origin-center mix-blend-multiply" />
-                     </div>
-                     <div className="flex flex-col flex-1">
-                       <h3 className="text-[1.1rem] font-extrabold text-slate-800 mb-2 leading-tight tracking-tight">You had to wait<br className="hidden xl:block"/> for hours</h3>
-                       <p className="text-xs text-slate-500 leading-relaxed font-medium">A quick salon visit became an unpredictable queue that consumed the part of the day you had planned.</p>
-                     </div>
+                    <div className="w-8 h-8 rounded-full bg-[#f0eaff] flex items-center justify-center mb-3 shrink-0">
+                      <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'wght' 300" }}>schedule</span>
+                    </div>
+                    <div className="mb-4 h-[120px] flex justify-center items-center relative w-full overflow-hidden rounded-xl bg-gradient-to-b from-transparent to-black/5 shrink-0">
+                      <img src="/assets2.png" alt="Waiting visual" className="object-cover w-full h-full scale-[1.15] group-hover:scale-[1.20] transition-transform duration-500 origin-center mix-blend-multiply" />
+                    </div>
+                    <div className="flex flex-col flex-1">
+                      <h3 className="text-[1.1rem] font-extrabold text-slate-800 mb-2 leading-tight tracking-tight">You had to wait<br className="hidden xl:block" /> without clarity</h3>
+                      <p className="text-xs text-slate-500 leading-relaxed font-medium">A quick visit became an unpredictable queue that consumed the part of the day you had planned.</p>
+                    </div>
                   </div>
-                  
+
                   {/* Card 3 */}
                   <div className="bg-white/70 backdrop-blur-xl rounded-[1.5rem] p-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white flex flex-col h-full relative group hover:-translate-y-1 transition-all duration-300">
-                     <div className="w-8 h-8 rounded-full bg-[#f0eaff] flex items-center justify-center mb-3 shrink-0">
-                        <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'wght' 300" }}>block</span>
-                     </div>
-                     <div className="mb-4 h-[120px] flex justify-center items-center relative w-full overflow-hidden rounded-xl bg-gradient-to-b from-transparent to-black/5 shrink-0">
-                        <img src="/asset3.png" alt="Wrong barber visual" className="object-cover w-full h-full scale-[1.25] group-hover:scale-[1.3] transition-transform duration-500 origin-center mix-blend-multiply" />
-                     </div>
-                     <div className="flex flex-col flex-1">
-                       <h3 className="text-[1.1rem] font-extrabold text-slate-800 mb-2 leading-tight tracking-tight">You ended up with someone you didn&apos;t want</h3>
-                       <p className="text-xs text-slate-500 leading-relaxed font-medium">When choice disappears, the result feels random and the whole experience stops feeling personal.</p>
-                     </div>
+                    <div className="w-8 h-8 rounded-full bg-[#f0eaff] flex items-center justify-center mb-3 shrink-0">
+                      <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'wght' 300" }}>block</span>
+                    </div>
+                    <div className="mb-4 h-[120px] flex justify-center items-center relative w-full overflow-hidden rounded-xl bg-gradient-to-b from-transparent to-black/5 shrink-0">
+                      <img src="/asset3.png" alt="Wrong barber visual" className="object-cover w-full h-full scale-[1.25] group-hover:scale-[1.3] transition-transform duration-500 origin-center mix-blend-multiply" />
+                    </div>
+                    <div className="flex flex-col flex-1">
+                      <h3 className="text-[1.1rem] font-extrabold text-slate-800 mb-2 leading-tight tracking-tight">You settled for someone you didn&apos;t choose</h3>
+                      <p className="text-xs text-slate-500 leading-relaxed font-medium">When choice disappears, the result feels random and the whole experience stops feeling personal.</p>
+                    </div>
                   </div>
-                  
+
                 </div>
 
                 {/* Bottom Bar */}
                 <div className="bg-white/80 backdrop-blur-2xl border border-white rounded-[1.5rem] p-4 lg:p-6 flex flex-col md:flex-row items-center justify-between gap-4 shadow-[0_15px_40px_rgb(0,0,0,0.06)] relative z-10 w-full mx-auto">
-                   <div className="flex items-center gap-4 w-full md:w-auto">
-                      <div className="w-10 h-10 bg-[#744fe3] text-white rounded-full flex items-center justify-center shrink-0 shadow-lg shadow-[#744fe3]/40">
-                         <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
-                      </div>
-                      <div className="flex flex-col">
-                         <h4 className="text-[0.95rem] xl:text-[1.1rem] font-extrabold text-slate-800 mb-0.5 leading-tight tracking-tight">People don&apos;t want surprises.</h4>
-                         <p className="text-[10px] md:text-xs text-slate-500 font-medium tracking-wide">They want clarity before they leave home.</p>
-                      </div>
-                   </div>
-                   <div className="flex items-center justify-center md:justify-end gap-1.5 text-[#6b47dc] font-extrabold text-xs md:text-sm whitespace-nowrap bg-[#f4f0fd] px-4 py-2 rounded-xl shrink-0">
-                      Waiting is not premium.
-                      <span className="text-lg leading-none">✨</span>
-                   </div>
+                  <div className="flex items-center gap-4 w-full md:w-auto">
+                    <div className="w-10 h-10 bg-[#744fe3] text-white rounded-full flex items-center justify-center shrink-0 shadow-lg shadow-[#744fe3]/40">
+                      <span className="material-symbols-outlined text-[18px]" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
+                    </div>
+                    <div className="flex flex-col">
+                      <h4 className="text-[0.95rem] xl:text-[1.1rem] font-extrabold text-slate-800 mb-0.5 leading-tight tracking-tight">Grooming should feel controlled. Not random.</h4>
+                      <p className="text-[10px] md:text-xs text-slate-500 font-medium tracking-wide">You deserve clarity before you leave home.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center justify-center md:justify-end gap-1.5 text-[#6b47dc] font-extrabold text-xs md:text-sm whitespace-nowrap bg-[#f4f0fd] px-4 py-2 rounded-xl shrink-0">
+                    Waiting is not premium.
+                    <span className="text-lg leading-none">✨</span>
+                  </div>
                 </div>
               </div>
 
@@ -361,27 +365,27 @@ export default function Home() {
         <section id="how-it-works" className="py-16 md:py-24 hero-gradient relative overflow-hidden border-b border-outline-variant/10">
           <div className="max-w-6xl mx-auto px-6 relative z-10">
             <div className="text-center mb-14">
-              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">Tresra fixes that.</h2>
-              <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">Three simple steps to the haircut you actually want, exactly when you want it.</p>
+              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">Tresra gives you full control.</h2>
+              <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">Three simple steps to the grooming experience you actually want, exactly when you want it.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
               <div className="glass-card p-7 rounded-[1.5rem] relative group hover:-translate-y-2 transition-all duration-500">
                 <div className="absolute -top-5 left-7 bg-primary text-white w-10 h-10 rounded-[1rem] flex items-center justify-center text-lg font-black shadow-lg shadow-primary/20">1</div>
                 <div className="mb-6"><span className="material-symbols-outlined text-4xl text-primary" style={{ fontVariationSettings: "'wght' 300" }}>storefront</span></div>
-                <h3 className="text-xl font-extrabold text-on-surface mb-3">Choose your salon</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Find top-rated spots in your neighborhood. See verified interior photos and client galleries.</p>
+                <h3 className="text-xl font-extrabold text-on-surface mb-3">Choose your salon or studio</h3>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Find top-rated spots in your neighborhood. See verified photos, services, and client galleries.</p>
               </div>
               <div className="glass-card p-7 rounded-[1.5rem] relative group hover:-translate-y-2 transition-all duration-500">
                 <div className="absolute -top-5 left-7 bg-secondary text-white w-10 h-10 rounded-[1rem] flex items-center justify-center text-lg font-black shadow-lg shadow-secondary/20">2</div>
                 <div className="mb-6"><span className="material-symbols-outlined text-4xl text-secondary" style={{ fontVariationSettings: "'wght' 300" }}>content_cut</span></div>
-                <h3 className="text-xl font-extrabold text-on-surface mb-3">Select your barber</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">Browse individual portfolios. Pick the specific stylist who nails the look you&apos;re after.</p>
+                <h3 className="text-xl font-extrabold text-on-surface mb-3">Select your stylist or expert</h3>
+                <p className="text-sm text-on-surface-variant leading-relaxed">Browse individual profiles and portfolios. Pick the professional who nails exactly what you&apos;re after.</p>
               </div>
               <div className="glass-card p-7 rounded-[1.5rem] relative group hover:-translate-y-2 transition-all duration-500">
                 <div className="absolute -top-5 left-7 bg-tertiary text-white w-10 h-10 rounded-[1rem] flex items-center justify-center text-lg font-black shadow-lg shadow-tertiary/20">3</div>
                 <div className="mb-6"><span className="material-symbols-outlined text-4xl text-tertiary" style={{ fontVariationSettings: "'wght' 300" }}>event_available</span></div>
-                <h3 className="text-xl font-extrabold text-on-surface mb-3">Book your exact slot</h3>
-                <p className="text-sm text-on-surface-variant leading-relaxed">See real-time schedules. Pick your time, confirm, and just walk in. No waiting required.</p>
+                <h3 className="text-xl font-extrabold text-on-surface mb-3">Book your exact time</h3>
+                <p className="text-sm text-on-surface-variant leading-relaxed">See real-time schedules. Pick your slot, confirm, and walk in ready. No waiting. No surprises.</p>
               </div>
             </div>
           </div>
@@ -399,19 +403,19 @@ export default function Home() {
                 <div className="w-16 h-16 glass-card rounded-[1.5rem] flex items-center justify-center shadow-lg shadow-primary/5 transition-transform hover:scale-110 duration-500">
                   <span className="material-symbols-outlined text-3xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>search</span>
                 </div>
-                <h3 className="text-xl font-bold text-on-surface">1. Find your salon</h3>
+                <h3 className="text-xl font-bold text-on-surface">1. Find your salon or studio</h3>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="w-16 h-16 glass-card rounded-[1.5rem] flex items-center justify-center shadow-lg shadow-secondary/5 transition-transform hover:scale-110 duration-500">
                   <span className="material-symbols-outlined text-3xl text-secondary" style={{ fontVariationSettings: "'wght' 500" }}>face_6</span>
                 </div>
-                <h3 className="text-xl font-bold text-on-surface">2. Pick your barber</h3>
+                <h3 className="text-xl font-bold text-on-surface">2. Pick your stylist or expert</h3>
               </div>
               <div className="flex flex-col items-center text-center space-y-4">
                 <div className="w-16 h-16 glass-card rounded-[1.5rem] flex items-center justify-center shadow-lg shadow-tertiary/5 transition-transform hover:scale-110 duration-500">
                   <span className="material-symbols-outlined text-3xl text-tertiary" style={{ fontVariationSettings: "'wght' 500" }}>touch_app</span>
                 </div>
-                <h3 className="text-xl font-bold text-on-surface">3. Book your time</h3>
+                <h3 className="text-xl font-bold text-on-surface">3. Book your exact time</h3>
               </div>
             </div>
           </div>
@@ -429,25 +433,72 @@ export default function Home() {
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>radar</span>
                 </div>
-                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Real-time barber availability</h3>
+                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Real-time professional availability</h3>
               </div>
               <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 transition-all duration-500">
                 <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-2xl text-secondary" style={{ fontVariationSettings: "'wght' 500" }}>auto_awesome</span>
                 </div>
-                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Smart scheduling</h3>
+                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Smart appointment scheduling</h3>
               </div>
               <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 transition-all duration-500">
                 <div className="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-2xl text-tertiary" style={{ fontVariationSettings: "'wght' 500" }}>account_circle</span>
                 </div>
-                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Personalized experience</h3>
+                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Personalized stylist selection</h3>
               </div>
               <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 transition-all duration-500">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>speed</span>
                 </div>
-                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">No waiting time</h3>
+                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Zero wait-time experience</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Category Expansion Section */}
+        <section id="categories" className="py-16 md:py-24 bg-white relative overflow-hidden">
+          <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-14">
+              <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase mb-5">
+                Everything in one place
+              </div>
+              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">What you can book on Tresra</h2>
+              <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">From everyday grooming to full beauty services — Tresra connects you to the right professional, every time.</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>content_cut</span>
+                </div>
+                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Haircuts &amp; Styling</h3>
+              </div>
+              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300">
+                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-2xl text-secondary" style={{ fontVariationSettings: "'wght' 500" }}>face_6</span>
+                </div>
+                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Grooming &amp; Beard Care</h3>
+              </div>
+              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300">
+                <div className="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-2xl text-tertiary" style={{ fontVariationSettings: "'wght' 500" }}>auto_fix_high</span>
+                </div>
+                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Hair Treatments</h3>
+              </div>
+              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                <div className="absolute top-2 right-2 bg-primary/10 text-primary text-[8px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full">Soon</div>
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>brush</span>
+                </div>
+                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Makeup &amp; Beauty</h3>
+              </div>
+              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden col-span-2 md:col-span-1">
+                <div className="absolute top-2 right-2 bg-primary/10 text-primary text-[8px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full">Soon</div>
+                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-2xl text-secondary" style={{ fontVariationSettings: "'wght' 500" }}>spa</span>
+                </div>
+                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Spa &amp; Self-Care</h3>
               </div>
             </div>
           </div>
@@ -471,10 +522,10 @@ export default function Home() {
                   <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                 </div>
                 <p className="text-lg md:text-xl font-semibold text-on-surface leading-snug mb-6">
-                  &quot;Finally I can book my barber directly. No more phone calls or guessing who is working.&quot;
+                  &quot;Finally I can book my stylist directly. No more phone calls or guessing who is available.&quot;
                 </p>
                 <div className="flex items-center gap-3">
-                  <img alt="Ajay Singh." className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="/assets/reviewer2.png" />
+                  <img alt="Vivek" className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm" src="/assets/reviewer2.png" />
                   <div>
                     <p className="font-bold text-on-surface text-sm">Vivek.</p>
                     <p className="text-xs text-on-surface-variant font-medium">Regular User</p>
@@ -516,7 +567,7 @@ export default function Home() {
               Take control of your <span className="text-primary italic">grooming.</span>
             </h2>
             <p className="text-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
-               Join thousands of men who have upgraded their haircut experience. No more lines, no more waiting, just perfect style on your schedule.
+              From quick trims to full styling sessions — people trust Tresra to plan their time better. No more lines, no more waiting, just your look, on your schedule.
             </p>
             <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
               <button onClick={() => setShowDialog(true)} className="group bg-primary text-white px-8 py-4 rounded-full font-black text-lg shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
