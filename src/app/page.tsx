@@ -1,11 +1,40 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [showDialog, setShowDialog] = useState(false);
+  const [showSplash, setShowSplash] = useState(false);
+  const [renderSplash, setRenderSplash] = useState(true);
+
+  useEffect(() => {
+    // Fade IN shortly after mount
+    const fadeIn = setTimeout(() => setShowSplash(true), 100);
+    // Fade OUT after 2.5 seconds
+    const fadeOut = setTimeout(() => setShowSplash(false), 2500);
+    // Unmount completely after fade out completes
+    const unmount = setTimeout(() => setRenderSplash(false), 3500);
+
+    return () => {
+      clearTimeout(fadeIn);
+      clearTimeout(fadeOut);
+      clearTimeout(unmount);
+    };
+  }, []);
 
   return (
     <div className="text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+
+      {/* Splash Screen */}
+      {renderSplash && (
+        <div className={`fixed inset-0 z-[9999] bg-[#fcf4ff] flex items-center justify-center transition-opacity duration-1000 ${showSplash ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+          {/* Tresra Logo / Text in Bricolage Grotesque */}
+          <div className={`text-transparent bg-clip-text bg-gradient-to-r from-[#652fe7] to-[#a98fff] text-6xl md:text-8xl font-black tracking-tight transform transition-all duration-1000 ease-out ${showSplash ? 'opacity-100 scale-100 blur-none' : 'opacity-0 scale-95 blur-md'}`}>
+            Tresra
+          </div>
+          {/* Floating soft light blobs behind */}
+          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#dfc8ff]/60 blur-[100px] rounded-full mix-blend-multiply transition-opacity duration-1000 delay-100 ${showSplash ? 'opacity-100' : 'opacity-0'}`}></div>
+        </div>
+      )}
 
       {/* Coming Soon Dialog */}
       {showDialog && (
@@ -422,85 +451,235 @@ export default function Home() {
         </section>
 
         {/* Key Features Section */}
-        <section id="features" className="py-16 md:py-24 bg-[#fcf4ff] relative overflow-hidden">
-          <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-14">
-              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">Key Features</h2>
-              <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">Designed for your convenience.</p>
+        <section id="features" className="py-24 md:py-32 relative overflow-hidden bg-gradient-to-b from-white via-[#faf5ff] to-white">
+          {/* Subtle atmospheric glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] max-w-[1000px] rounded-full bg-gradient-to-br from-[#f3e8ff]/80 via-[#fdf4ff]/80 to-[#e0e7ff]/50 blur-[100px] pointer-events-none"></div>
+
+          <div className="max-w-5xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-16">
+              <div className="inline-block text-[#9254f3] text-[10px] font-extrabold tracking-[0.2em] uppercase mb-4">
+                Platform Features
+              </div>
+              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-[#37274d] mb-4">
+                Built for people who value their time.
+              </h2>
+              <p className="text-lg text-slate-500 max-w-xl mx-auto font-medium">
+                Efficiency at its core. Everything structured to get you the booking you need right now.
+              </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 transition-all duration-500">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>radar</span>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+              {/* Card 1: Full Width */}
+              <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.08)] transition-all duration-300 md:col-span-2 flex flex-col justify-center min-h-[220px]">
+                <div className="absolute -bottom-6 -right-6 opacity-[0.03] group-hover:opacity-[0.05] group-hover:scale-110 transition-all duration-500 pointer-events-none">
+                  <span className="material-symbols-outlined text-[#9254f3] text-[180px]" style={{ fontVariationSettings: "'wght' 200" }}>bolt</span>
                 </div>
-                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Real-time professional availability</h3>
+                <div className="w-12 h-12 bg-white rounded-[1rem] shadow-sm border border-purple-50 flex items-center justify-center mb-6 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[#9254f3] text-xl" style={{ fontVariationSettings: "'wght' 300" }}>bolt</span>
+                </div>
+                <div className="relative z-10 md:max-w-lg">
+                  <h3 className="text-xl font-extrabold text-slate-800 mb-2 tracking-tight">Real-Time Availability</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed font-medium">Know instantly when your preferred professional is free. No guessing, no phone calls.</p>
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 transition-all duration-500">
-                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-secondary" style={{ fontVariationSettings: "'wght' 500" }}>auto_awesome</span>
+
+              {/* Card 2: Half */}
+              <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.08)] transition-all duration-300 flex flex-col justify-start min-h-[260px]">
+                <div className="absolute -bottom-6 -right-6 opacity-[0.03] group-hover:opacity-[0.05] group-hover:scale-110 transition-all duration-500 pointer-events-none">
+                  <span className="material-symbols-outlined text-[#9254f3] text-[140px]" style={{ fontVariationSettings: "'wght' 200" }}>account_circle</span>
                 </div>
-                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Smart appointment scheduling</h3>
+                <div className="w-12 h-12 bg-white rounded-[1rem] shadow-sm border border-purple-50 flex items-center justify-center mb-6 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[#9254f3] text-xl" style={{ fontVariationSettings: "'wght' 300" }}>account_circle</span>
+                </div>
+                <div className="relative z-10 w-full pr-4">
+                  <h3 className="text-xl font-extrabold text-slate-800 mb-2 tracking-tight">Stylist Profiles</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed font-medium">Portfolios, specializations, and honest ratings — everything you need to choose with confidence.</p>
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 transition-all duration-500">
-                <div className="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-tertiary" style={{ fontVariationSettings: "'wght' 500" }}>account_circle</span>
+
+              {/* Card 3: Half */}
+              <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.08)] transition-all duration-300 flex flex-col justify-start min-h-[260px]">
+                <div className="absolute -bottom-6 -right-6 opacity-[0.03] group-hover:opacity-[0.05] group-hover:scale-110 transition-all duration-500 pointer-events-none">
+                  <span className="material-symbols-outlined text-[#9254f3] text-[140px]" style={{ fontVariationSettings: "'wght' 200" }}>event_available</span>
                 </div>
-                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Personalized stylist selection</h3>
+                <div className="w-12 h-12 bg-white rounded-[1rem] shadow-sm border border-purple-50 flex items-center justify-center mb-6 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[#9254f3] text-xl" style={{ fontVariationSettings: "'wght' 300" }}>event_available</span>
+                </div>
+                <div className="relative z-10 w-full pr-4">
+                  <h3 className="text-xl font-extrabold text-slate-800 mb-2 tracking-tight">Zero Wait, Every Time</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed font-medium">Your appointment starts exactly when scheduled.</p>
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 transition-all duration-500">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>speed</span>
+
+              {/* Card 4: Half */}
+              <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.08)] transition-all duration-300 flex flex-col justify-start min-h-[260px]">
+                <div className="absolute -bottom-6 -right-6 opacity-[0.03] group-hover:opacity-[0.05] group-hover:scale-110 transition-all duration-500 pointer-events-none">
+                  <span className="material-symbols-outlined text-[#9254f3] text-[140px]" style={{ fontVariationSettings: "'wght' 200" }}>edit_calendar</span>
                 </div>
-                <h3 className="text-base font-extrabold text-on-surface mb-2 leading-tight">Zero wait-time experience</h3>
+                <div className="w-12 h-12 bg-white rounded-[1rem] shadow-sm border border-purple-50 flex items-center justify-center mb-6 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[#9254f3] text-xl" style={{ fontVariationSettings: "'wght' 300" }}>edit_calendar</span>
+                </div>
+                <div className="relative z-10 w-full pr-4">
+                  <h3 className="text-xl font-extrabold text-slate-800 mb-2 tracking-tight">Seamless Rescheduling</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed font-medium">Plans change. Adjusting your booking takes seconds — not calls back and forth.</p>
+                </div>
+              </div>
+
+              {/* Card 5: Half */}
+              <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.08)] transition-all duration-300 flex flex-col justify-start min-h-[260px]">
+                <div className="absolute -bottom-6 -right-6 opacity-[0.03] group-hover:opacity-[0.05] group-hover:scale-110 transition-all duration-500 pointer-events-none">
+                  <span className="material-symbols-outlined text-[#9254f3] text-[140px]" style={{ fontVariationSettings: "'wght' 200" }}>notifications</span>
+                </div>
+                <div className="w-12 h-12 bg-white rounded-[1rem] shadow-sm border border-purple-50 flex items-center justify-center mb-6 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[#9254f3] text-xl" style={{ fontVariationSettings: "'wght' 300" }}>notifications</span>
+                </div>
+                <div className="relative z-10 w-full pr-4">
+                  <h3 className="text-xl font-extrabold text-slate-800 mb-2 tracking-tight">Smart Reminders</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed font-medium">Automated alerts before every appointment. Never miss a session.</p>
+                </div>
+              </div>
+
+              {/* Card 6: Full Width */}
+              <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.08)] transition-all duration-300 md:col-span-2 flex flex-col justify-center min-h-[220px]">
+                <div className="absolute -bottom-6 -right-6 opacity-[0.03] group-hover:opacity-[0.05] group-hover:scale-110 transition-all duration-500 pointer-events-none">
+                  <span className="material-symbols-outlined text-[#9254f3] text-[180px]" style={{ fontVariationSettings: "'wght' 200" }}>verified_user</span>
+                </div>
+                <div className="w-12 h-12 bg-white rounded-[1rem] shadow-sm border border-purple-50 flex items-center justify-center mb-6 shrink-0 group-hover:scale-105 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[#9254f3] text-xl" style={{ fontVariationSettings: "'wght' 300" }}>verified_user</span>
+                </div>
+                <div className="relative z-10 md:max-w-lg">
+                  <h3 className="text-xl font-extrabold text-slate-800 mb-2 tracking-tight">Verified Professionals</h3>
+                  <p className="text-[14px] text-slate-500 leading-relaxed font-medium">Every listed professional is verified. Honest reviews from real clients only.</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Category Expansion Section */}
-        <section id="categories" className="py-16 md:py-24 bg-white relative overflow-hidden">
+        {/* Category Expansion Section (Services) */}
+        <section id="categories" className="py-24 md:py-32 bg-[#fcf4ff] relative overflow-hidden">
+          {/* Subtle 'T' watermarks per design system */}
+          <div className="absolute inset-0 pointer-events-none flex flex-wrap gap-24 justify-center items-center opacity-[0.03] select-none text-[#37274d] mix-blend-multiply flex-col sm:flex-row">
+            <span className="text-[25rem] font-serif leading-none mt-[-10%] ml-[-10%]">T</span>
+            <span className="text-[30rem] font-serif leading-none mt-[20%]">T</span>
+            <span className="text-[25rem] font-serif leading-none mt-[-5%] mr-[-10%]">T</span>
+            <span className="text-[20rem] font-serif leading-none mt-[40%] ml-[10%]">T</span>
+          </div>
+
           <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-14">
-              <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase mb-5">
-                Everything in one place
+            <div className="text-center mb-16">
+              <div className="inline-block text-[#652fe7] text-[10px] font-extrabold tracking-[0.2em] uppercase mb-4">
+                Services
               </div>
-              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-on-surface mb-4">What you can book on Tresra</h2>
-              <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">From everyday grooming to full beauty services — Tresra connects you to the right professional, every time.</p>
+              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-[#37274d] mb-4">
+                Every service. One platform.
+              </h2>
+              <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
+                From everyday grooming to complete transformations —<br className="hidden md:block" /> all under Tresra.
+              </p>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>content_cut</span>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Card 1 */}
+              <div className="bg-white/80 backdrop-blur-2xl border border-[#baa4d3]/15 p-7 rounded-[2rem] shadow-[0_10px_40px_rgb(101,47,231,0.05)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_50px_rgb(101,47,231,0.08)] transition-all duration-500 min-h-[310px] flex flex-col justify-end z-10">
+                <div className="absolute top-5 right-5 w-[168px] h-[168px] md:w-40 md:h-40 rounded-[1.5rem] overflow-hidden shadow-lg z-10 group-hover:scale-105 transition-transform duration-700">
+                  <img src="https://images.unsplash.com/photo-1759134198561-e2041049419c?q=80&w=400&auto=format&fit=crop" alt="Haircut & Styling" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Haircuts &amp; Styling</h3>
+                <div className="absolute top-10 right-0 w-28 h-32 md:w-32 md:h-36 bg-white/40 backdrop-blur-xl border border-[rgba(186,164,211,0.4)] rounded-l-[1rem] z-20 translate-x-2 shadow-[0_8px_32px_rgba(0,0,0,0.05)] group-hover:-translate-x-1 transition-all duration-500"></div>
+
+                <div className="relative z-30 max-w-[70%] mt-32">
+                  <div className="w-6 h-6 bg-gradient-to-br from-[#652fe7] to-[#a98fff] rounded-full flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(101,47,231,0.4)]">
+                    <span className="material-symbols-outlined text-white text-[12px] font-bold">content_cut</span>
+                  </div>
+                  <h3 className="text-lg font-extrabold text-[#37274d] mb-1 tracking-tight">Haircut & Styling</h3>
+                  <p className="text-[13px] text-slate-500 font-medium leading-snug">Precision cuts, modern styles</p>
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-secondary" style={{ fontVariationSettings: "'wght' 500" }}>face_6</span>
+
+              {/* Card 2 */}
+              <div className="bg-white/80 backdrop-blur-2xl border border-[#baa4d3]/15 p-7 rounded-[2rem] shadow-[0_10px_40px_rgb(101,47,231,0.05)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_50px_rgb(101,47,231,0.08)] transition-all duration-500 min-h-[310px] flex flex-col justify-end z-10">
+                <div className="absolute top-5 right-5 w-[168px] h-[168px] md:w-40 md:h-40 rounded-[1.5rem] overflow-hidden shadow-lg z-10 group-hover:scale-105 transition-transform duration-700">
+                  <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=400&auto=format&fit=crop" alt="Skincare & Facials" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Grooming &amp; Beard Care</h3>
+                <div className="absolute top-10 right-0 w-28 h-32 md:w-32 md:h-36 bg-white/40 backdrop-blur-xl border border-[rgba(186,164,211,0.4)] rounded-l-[1rem] z-20 translate-x-2 shadow-[0_8px_32px_rgba(0,0,0,0.05)] group-hover:-translate-x-1 transition-all duration-500"></div>
+
+                <div className="relative z-30 max-w-[70%] mt-32">
+                  <div className="w-6 h-6 bg-gradient-to-br from-[#652fe7] to-[#a98fff] rounded-full flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(101,47,231,0.4)]">
+                    <span className="material-symbols-outlined text-white text-[12px] font-bold">spa</span>
+                  </div>
+                  <h3 className="text-lg font-extrabold text-[#37274d] mb-1 tracking-tight">Skincare & Facials</h3>
+                  <p className="text-[13px] text-slate-500 font-medium leading-snug">Professional-grade treatments</p>
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300">
-                <div className="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-tertiary" style={{ fontVariationSettings: "'wght' 500" }}>auto_fix_high</span>
+
+              {/* Card 3 */}
+              <div className="bg-white/80 backdrop-blur-2xl border border-[#baa4d3]/15 p-7 rounded-[2rem] shadow-[0_10px_40px_rgb(101,47,231,0.05)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_50px_rgb(101,47,231,0.08)] transition-all duration-500 min-h-[310px] flex flex-col justify-end z-10">
+                <div className="absolute top-5 right-5 w-[168px] h-[168px] md:w-40 md:h-40 rounded-[1.5rem] overflow-hidden shadow-lg z-10 group-hover:scale-105 transition-transform duration-700">
+                  <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=400&auto=format&fit=crop" alt="Beauty & Makeup" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Hair Treatments</h3>
+                <div className="absolute top-10 right-0 w-28 h-32 md:w-32 md:h-36 bg-white/40 backdrop-blur-xl border border-[rgba(186,164,211,0.4)] rounded-l-[1rem] z-20 translate-x-2 shadow-[0_8px_32px_rgba(0,0,0,0.05)] group-hover:-translate-x-1 transition-all duration-500"></div>
+
+                <div className="relative z-30 max-w-[70%] mt-32">
+                  <div className="w-6 h-6 bg-gradient-to-br from-[#652fe7] to-[#a98fff] rounded-full flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(101,47,231,0.4)]">
+                    <span className="material-symbols-outlined text-white text-[12px] font-bold">brush</span>
+                  </div>
+                  <h3 className="text-lg font-extrabold text-[#37274d] mb-1 tracking-tight">Beauty & Makeup</h3>
+                  <p className="text-[13px] text-slate-500 font-medium leading-snug">From everyday to editorial.</p>
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
-                <div className="absolute top-2 right-2 bg-primary/10 text-primary text-[8px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full">Soon</div>
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'wght' 500" }}>brush</span>
+
+              {/* Card 4 */}
+              <div className="bg-white/80 backdrop-blur-2xl border border-[#baa4d3]/15 p-7 rounded-[2rem] shadow-[0_10px_40px_rgb(101,47,231,0.05)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_50px_rgb(101,47,231,0.08)] transition-all duration-500 min-h-[310px] flex flex-col justify-end z-10">
+                <div className="absolute top-5 right-5 w-[168px] h-[168px] md:w-40 md:h-40 rounded-[1.5rem] overflow-hidden shadow-lg z-10 group-hover:scale-105 transition-transform duration-700">
+                  <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=400&auto=format&fit=crop" alt="Grooming" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Makeup &amp; Beauty</h3>
+                <div className="absolute top-10 right-0 w-28 h-32 md:w-32 md:h-36 bg-white/40 backdrop-blur-xl border border-[rgba(186,164,211,0.4)] rounded-l-[1rem] z-20 translate-x-2 shadow-[0_8px_32px_rgba(0,0,0,0.05)] group-hover:-translate-x-1 transition-all duration-500"></div>
+
+                <div className="relative z-30 max-w-[70%] mt-32">
+                  <div className="w-6 h-6 bg-gradient-to-br from-[#652fe7] to-[#a98fff] rounded-full flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(101,47,231,0.4)]">
+                    <span className="material-symbols-outlined text-white text-[12px] font-bold">check</span>
+                  </div>
+                  <h3 className="text-lg font-extrabold text-[#37274d] mb-1 tracking-tight">Grooming</h3>
+                  <p className="text-[13px] text-slate-500 font-medium leading-snug">Beard, body & beyond</p>
+                </div>
               </div>
-              <div className="glass-card p-6 rounded-[2rem] flex flex-col items-center text-center group hover:bg-white/80 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden col-span-2 md:col-span-1">
-                <div className="absolute top-2 right-2 bg-primary/10 text-primary text-[8px] font-extrabold uppercase tracking-widest px-2 py-0.5 rounded-full">Soon</div>
-                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-2xl text-secondary" style={{ fontVariationSettings: "'wght' 500" }}>spa</span>
+
+              {/* Card 5 */}
+              <div className="bg-white/80 backdrop-blur-2xl border border-[#baa4d3]/15 p-7 rounded-[2rem] shadow-[0_10px_40px_rgb(101,47,231,0.05)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_50px_rgb(101,47,231,0.08)] transition-all duration-500 min-h-[310px] flex flex-col justify-end z-10">
+                <div className="absolute top-5 right-5 w-[168px] h-[168px] md:w-40 md:h-40 rounded-[1.5rem] overflow-hidden shadow-lg z-10 group-hover:scale-105 transition-transform duration-700">
+                  <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=400&auto=format&fit=crop" alt="Nails & Wellness" className="w-full h-full object-cover" />
                 </div>
-                <h3 className="text-sm font-extrabold text-on-surface leading-tight">Spa &amp; Self-Care</h3>
+                <div className="absolute top-10 right-0 w-28 h-32 md:w-32 md:h-36 bg-white/40 backdrop-blur-xl border border-[rgba(186,164,211,0.4)] rounded-l-[1rem] z-20 translate-x-2 shadow-[0_8px_32px_rgba(0,0,0,0.05)] group-hover:-translate-x-1 transition-all duration-500"></div>
+
+                <div className="relative z-30 max-w-[70%] mt-32">
+                  <div className="w-6 h-6 bg-gradient-to-br from-[#652fe7] to-[#a98fff] rounded-full flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(101,47,231,0.4)]">
+                    <span className="material-symbols-outlined text-white text-[12px] font-bold">water_drop</span>
+                  </div>
+                  <h3 className="text-lg font-extrabold text-[#37274d] mb-1 tracking-tight">Nails & Wellness</h3>
+                  <p className="text-[13px] text-slate-500 font-medium leading-snug">Manicure, pedicure & spa</p>
+                </div>
+              </div>
+
+              {/* Card 6 */}
+              <div className="bg-white/80 backdrop-blur-2xl border border-[#baa4d3]/15 p-7 rounded-[2rem] shadow-[0_10px_40px_rgb(101,47,231,0.05)] relative overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_50px_rgb(101,47,231,0.08)] transition-all duration-500 min-h-[310px] flex flex-col justify-end z-10">
+                <div className="absolute top-5 right-5 w-[168px] h-[168px] md:w-40 md:h-40 rounded-[1.5rem] overflow-hidden shadow-lg z-10 group-hover:scale-105 transition-transform duration-700">
+                  <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=400&auto=format&fit=crop" alt="Color & Treatment" className="w-full h-full object-cover" />
+                </div>
+                <div className="absolute top-10 right-0 w-28 h-32 md:w-32 md:h-36 bg-white/40 backdrop-blur-xl border border-[rgba(186,164,211,0.4)] rounded-l-[1rem] z-20 translate-x-2 shadow-[0_8px_32px_rgba(0,0,0,0.05)] group-hover:-translate-x-1 transition-all duration-500"></div>
+
+                <div className="relative z-30 max-w-[70%] mt-32">
+                  <div className="w-6 h-6 bg-gradient-to-br from-[#652fe7] to-[#a98fff] rounded-full flex items-center justify-center mb-3 shadow-[0_0_12px_rgba(101,47,231,0.4)]">
+                    <span className="material-symbols-outlined text-white text-[12px] font-bold">palette</span>
+                  </div>
+                  <h3 className="text-lg font-extrabold text-[#37274d] mb-1 tracking-tight">Color & Treatment</h3>
+                  <p className="text-[13px] text-slate-500 font-medium leading-snug">Bold transformations, precise results</p>
+                </div>
               </div>
             </div>
+
+            <p className="text-center text-sm font-bold text-slate-500 mt-16 tracking-wide">
+              More categories coming soon — wellness, tattoo, lashes & more.
+            </p>
           </div>
         </section>
 
@@ -553,6 +732,255 @@ export default function Home() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="pricing" className="py-24 md:py-32 relative overflow-hidden bg-[#fcf4ff]">
+          {/* Background Glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-full bg-gradient-to-b from-white via-[#faf5ff] to-[#fcf4ff] opacity-80 pointer-events-none"></div>
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-br from-[#f3e8ff]/60 via-[#fdf4ff]/40 to-transparent rounded-full blur-[120px] pointer-events-none"></div>
+
+          <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="text-center mb-12">
+              <div className="inline-block text-[#9254f3] text-[10px] font-extrabold tracking-[0.2em] uppercase mb-4">
+                Pricing
+              </div>
+              <h2 className="text-3xl lg:text-5xl font-extrabold tracking-tight text-[#37274d] mb-4">
+                Simple, transparent pricing.
+              </h2>
+              <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
+                Start for free. Upgrade when you&apos;re ready.
+              </p>
+            </div>
+
+            {/* Billing Toggle */}
+            <div className="flex justify-center mb-16">
+              <div className="bg-[#f0e6ff]/50 backdrop-blur-md p-1.5 rounded-full flex items-center border border-[#baa4d3]/20 shadow-inner">
+                <button className="bg-white text-[#37274d] px-6 py-2 rounded-full font-bold text-sm shadow-[0_2px_10px_rgba(101,47,231,0.1)] transition-colors">
+                  Monthly
+                </button>
+                <button className="text-[#37274d]/70 hover:text-[#37274d] px-6 py-2 rounded-full font-bold text-sm transition-colors flex items-center gap-2">
+                  Annual
+                  <span className="bg-white/60 text-[#9254f3] px-2 py-0.5 rounded-full text-[9px] font-black tracking-widest uppercase">20% off</span>
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-5xl mx-auto">
+
+              {/* Card 1: Essential */}
+              <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight">Essential</h3>
+                <p className="text-[13px] text-slate-500 font-medium leading-relaxed mb-8">Start discovering and booking instantly.</p>
+                <div className="mb-8">
+                  <span className="text-4xl font-extrabold text-[#37274d]">Free</span>
+                </div>
+                <ul className="space-y-4 mb-10 flex-1">
+                  {['Browse all professionals', '2 bookings per month', 'View ratings & reviews', 'Basic appointment reminders', 'Email support'].map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
+                      <span className="text-[14px] text-slate-700 font-medium">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button className="w-full bg-[#f4effc] hover:bg-[#ebe1f8] text-[#37274d] py-3.5 rounded-[1rem] font-bold text-sm transition-colors shadow-sm">
+                  Get Started
+                </button>
+              </div>
+
+              {/* Card 2: Plus */}
+              <div className="bg-gradient-to-br from-[#e4ccff] to-[#f6edff] border border-white p-8 rounded-[2rem] shadow-[0_15px_40px_rgb(101,47,231,0.15)] relative flex flex-col md:-translate-y-4">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#9254f3] text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-lg shadow-[#9254f3]/30">
+                  Most Popular
+                </div>
+                <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight mt-2">Plus</h3>
+                <p className="text-[13px] text-[#37274d]/70 font-medium leading-relaxed mb-8">For those who take their look seriously.</p>
+                <div className="mb-8 flex items-end gap-1">
+                  <span className="text-4xl font-extrabold text-[#9254f3] tracking-tight">$9.99</span>
+                  <span className="text-[13px] text-[#37274d]/60 font-bold mb-1">/ month</span>
+                </div>
+                <ul className="space-y-4 mb-10 flex-1">
+                  {['Unlimited bookings', 'Priority time slots', 'Smart reminders & alerts', 'Reschedule anytime', 'Stylist personal notes', 'Chat support'].map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
+                      <span className="text-[14px] text-[#37274d]/90 font-bold">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button className="w-full bg-gradient-to-r from-[#652fe7] to-[#a98fff] text-white py-3.5 rounded-[1rem] font-bold text-sm shadow-lg shadow-[#652fe7]/30 hover:opacity-90 transition-opacity">
+                  Start Free Trial
+                </button>
+              </div>
+
+              {/* Card 3: Pro */}
+              <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] hover:-translate-y-1 transition-transform duration-300 flex flex-col">
+                <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight">Pro</h3>
+                <p className="text-[13px] text-slate-500 font-medium leading-relaxed mb-8">The complete premium experience.</p>
+                <div className="mb-8 flex items-end gap-1">
+                  <span className="text-4xl font-extrabold text-[#37274d] tracking-tight">$19.99</span>
+                  <span className="text-[13px] text-slate-500 font-bold mb-1">/ month</span>
+                </div>
+                <ul className="space-y-4 mb-10 flex-1">
+                  {['Everything in Plus', 'Early access to new features', 'VIP priority support', 'Exclusive pre-launch slots', 'Dedicated account manager', 'Multiple profile management'].map((feature, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
+                      <span className="text-[14px] text-slate-700 font-medium">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button className="w-full bg-[#f4effc] hover:bg-[#ebe1f8] text-[#37274d] py-3.5 rounded-[1rem] font-bold text-sm transition-colors shadow-sm">
+                  Go Pro
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Mobile App Section */}
+        <section id="mobile-app" className="py-24 md:py-32 relative overflow-hidden bg-white">
+          {/* Faint T watermarks in grid pattern */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.02] flex flex-wrap content-start z-0 overflow-hidden">
+            {Array.from({ length: 40 }).map((_, i) => (
+              <div key={i} className="w-[20%] lg:w-[10%] aspect-square flex items-center justify-center">
+                <span className="text-4xl md:text-7xl font-serif text-[#37274d]">T</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+
+            {/* Left Content */}
+            <div className="flex-1 text-center lg:text-left">
+              <h2 className="text-4xl lg:text-[3.5rem] leading-[1.1] font-extrabold tracking-tight text-[#37274d] mb-6">
+                Control your <span className="text-[#652fe7]">grooming experience</span> from your pocket.
+              </h2>
+              <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+                Book, reschedule, and track appointments from anywhere. Tresra&apos;s mobile app puts your style routine in your hands — always.
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+                {/* App Store Button Mock */}
+                <button className="bg-white/90 backdrop-blur-md border border-[#baa4d3]/20 shadow-[0_8px_30px_rgb(146,84,243,0.08)] px-5 py-3 rounded-2xl flex items-center gap-3 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.12)] transition-all group">
+                  <span className="text-3xl text-[#37274d]">
+                    <svg viewBox="0 0 384 512" width="24" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
+                  </span>
+                  <div className="text-left leading-tight">
+                    <div className="text-[10px] text-slate-500 font-bold mb-0.5">Download on the</div>
+                    <div className="text-lg font-extrabold text-[#37274d]">App Store</div>
+                  </div>
+                </button>
+
+                {/* Google Play Button Mock */}
+                <button className="bg-white/90 backdrop-blur-md border border-[#baa4d3]/20 shadow-[0_8px_30px_rgb(146,84,243,0.08)] px-5 py-3 rounded-2xl flex items-center gap-3 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.12)] transition-all group">
+                  <span className="text-3xl text-slate-700">
+                    <svg viewBox="0 0 512 512" width="24" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" /></svg>
+                  </span>
+                  <div className="text-left leading-tight">
+                    <div className="text-[10px] text-slate-500 font-bold mb-0.5">GET IT ON</div>
+                    <div className="text-lg font-extrabold text-[#37274d]">Google Play</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            {/* Right Content : The iPhone Mockup */}
+            <div className="flex-1 w-full flex justify-center lg:justify-end relative">
+              {/* Phone Frame */}
+              <div className="relative w-[320px] h-[640px] bg-[#1a1a1a] rounded-[3.5rem] p-3 shadow-[0_30px_80px_rgba(30,10,60,0.15)] border-4 border-slate-800 z-20 overflow-hidden transform lg:rotate-2 hover:rotate-0 transition-transform duration-700">
+                {/* Internal Screen wrapping app */}
+                <div className="bg-[#fcf4ff] w-full h-full rounded-[2.5rem] overflow-hidden relative flex flex-col">
+                  {/* Dynamic Island Mock */}
+                  <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-full z-50"></div>
+
+                  {/* App UI Header */}
+                  <div className="pt-16 px-6 pb-5 bg-gradient-to-b from-[#f3e8ff]/80 to-transparent relative z-10 shrink-0">
+                    <h3 className="text-xl font-extrabold text-[#37274d] tracking-tight">Good morning</h3>
+                    <p className="text-xs text-slate-500 font-medium">What are we doing today?</p>
+                  </div>
+
+                  {/* Search Mock */}
+                  <div className="px-5 relative z-10 shrink-0 mb-4">
+                    <div className="w-full bg-white/60 backdrop-blur-xl rounded-full py-3 px-4 flex items-center border border-white/60 shadow-sm">
+                      <span className="text-[#a98fff] text-xs font-bold">Search salons, stylists...</span>
+                      <span className="material-symbols-outlined ml-auto text-slate-300 text-[18px] font-bold">search</span>
+                    </div>
+                  </div>
+
+                  {/* Filter pills */}
+                  <div className="px-5 flex gap-2 mb-6 pointer-events-none relative z-10 shrink-0">
+                    <div className="bg-white shadow-sm border border-white px-4 py-1.5 rounded-full text-[10px] font-bold text-[#37274d]">Haircut</div>
+                    <div className="bg-transparent border border-[#baa4d3]/30 px-4 py-1.5 rounded-full text-[10px] font-bold text-slate-500">Beauty</div>
+                    <div className="bg-transparent border border-[#baa4d3]/30 px-4 py-1.5 rounded-full text-[10px] font-bold text-slate-500">Groom</div>
+                  </div>
+
+                  {/* App Body (Scrollable area simulation) */}
+                  <div className="px-5 flex flex-col flex-1 pb-20 relative z-0 overflow-y-auto hide-scrollbar">
+                    {/* Barber List Item 1 */}
+                    <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[1.5rem] p-3 shadow-[0_4px_20px_rgb(146,84,243,0.06)] flex items-center gap-3 mb-3 shrink-0">
+                      <div className="w-14 h-14 bg-gradient-to-b from-purple-200 to-purple-100 rounded-[1.2rem] flex items-center justify-center shrink-0 shadow-inner overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" className="w-[85%] h-[85%] object-cover rounded-full shadow-sm" alt="Avatar" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-center mb-0.5">
+                          <h4 className="text-sm font-extrabold text-[#37274d] leading-none">Priya Sharma</h4>
+                          <div className="flex items-center gap-0.5 text-yellow-500"><span className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span> <span className="text-[10px] font-bold text-slate-600">4.9</span></div>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-medium">Haircut & Styling</p>
+                        <p className="text-[10px] text-[#a98fff] font-bold mt-1">Today 10:00 AM</p>
+                      </div>
+                    </div>
+
+                    {/* Barber List Item 2 */}
+                    <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[1.5rem] p-3 shadow-[0_4px_20px_rgb(146,84,243,0.06)] flex items-center gap-3 mb-3 shrink-0">
+                      <div className="w-14 h-14 bg-gradient-to-b from-blue-100 to-indigo-50 rounded-[1.2rem] flex items-center justify-center shrink-0 shadow-inner overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=150&auto=format&fit=crop" className="w-[85%] h-[85%] object-cover rounded-full shadow-sm" alt="Avatar" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-center mb-0.5">
+                          <h4 className="text-sm font-extrabold text-[#37274d] leading-none">Alex Rivera</h4>
+                          <div className="flex items-center gap-0.5 text-yellow-500"><span className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span> <span className="text-[10px] font-bold text-slate-600">4.9</span></div>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-medium">Haircut & Styling</p>
+                        <p className="text-[10px] text-[#a98fff] font-bold mt-1">Today 10:00 AM</p>
+                      </div>
+                    </div>
+
+                    {/* Barber List Item 3 */}
+                    <div className="bg-white/80 backdrop-blur-xl border border-white rounded-[1.5rem] p-3 shadow-[0_4px_20px_rgb(146,84,243,0.06)] flex items-center gap-3 shrink-0">
+                      <div className="w-14 h-14 bg-gradient-to-b from-pink-100 to-rose-50 rounded-[1.2rem] flex items-center justify-center shrink-0 shadow-inner overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1bf3c9?q=80&w=150&auto=format&fit=crop" className="w-[85%] h-[85%] object-cover rounded-full shadow-sm" alt="Avatar" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-center mb-0.5">
+                          <h4 className="text-sm font-extrabold text-[#37274d] leading-none">Zara Ahmed</h4>
+                          <div className="flex items-center gap-0.5 text-yellow-500"><span className="material-symbols-outlined text-[10px]" style={{ fontVariationSettings: "'FILL' 1" }}>star</span> <span className="text-[10px] font-bold text-slate-600">4.9</span></div>
+                        </div>
+                        <p className="text-[11px] text-slate-500 font-medium">Haircut & Styling</p>
+                        <p className="text-[10px] text-[#a98fff] font-bold mt-1">Today 10:00 AM</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* App Blur bottom fade */}
+                  <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#fcf4ff] via-[#fcf4ff]/80 to-transparent pointer-events-none z-10"></div>
+
+                  {/* Bottom Navigation Mock */}
+                  <div className="absolute bottom-6 left-5 right-5 bg-white/90 backdrop-blur-3xl border border-white h-16 rounded-[1.2rem] flex justify-around items-center px-2 z-50 shadow-[0_15px_40px_rgb(101,47,231,0.12)]">
+                    <span className="material-symbols-outlined text-[#37274d] text-[24px]" style={{ fontVariationSettings: "'FILL' 1" }}>home</span>
+                    <span className="material-symbols-outlined text-[#a98fff] text-[24px]">calendar_today</span>
+                    <span className="material-symbols-outlined text-[#a98fff] text-[24px]">notifications</span>
+                    <span className="material-symbols-outlined text-[#a98fff] text-[24px]">settings</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Aesthetic Blobs behind phone */}
+              <div className="absolute top-1/4 -right-10 w-64 h-64 bg-gradient-to-bl from-[#dfc8ff]/60 to-[#fdf4ff]/20 blur-[80px] rounded-full z-10 pointer-events-none"></div>
+              <div className="absolute bottom-1/4 -left-10 w-64 h-64 bg-gradient-to-tr from-[#dfc8ff]/60 to-[#fcf4ff] blur-[80px] rounded-full z-10 pointer-events-none"></div>
+            </div>
+
           </div>
         </section>
 
