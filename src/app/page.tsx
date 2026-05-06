@@ -144,10 +144,27 @@ export default function Home() {
               </div>
 
               <h2 className="text-2xl font-black text-on-surface mb-3 tracking-tight">
-                We&apos;re launching soon! 🚀
+                Early Bird Offer 🚀
               </h2>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-7">
-                Tresra is gearing up to go live. We&apos;re putting the finishing touches on something amazing — real-time barber booking, right at your fingertips.
+              <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
+                Register between <strong>May 7th and June 7th</strong> to secure our Early Bird plan (First 30–50 salons only!).
+              </p>
+
+              <div className="bg-primary/5 rounded-xl p-4 mb-4 text-left w-full border border-primary/10">
+                <ul className="text-sm text-on-surface-variant space-y-2">
+                  <li className="flex items-start gap-2">
+                    <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+                    <span><strong>30 Days Free</strong> (Strict)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+                    <span>Then just <strong>₹999/month</strong> locked forever</span>
+                  </li>
+                </ul>
+              </div>
+
+              <p className="text-sm font-bold text-primary mb-6">
+                Onboarding starts 7th May 2026.
               </p>
 
               {/* Divider */}
@@ -158,7 +175,7 @@ export default function Home() {
                 onClick={() => setShowDialog(false)}
                 className="w-full bg-primary text-white py-3 rounded-full font-bold text-sm shadow-lg shadow-primary/30 hover:opacity-90 active:scale-95 transition-all"
               >
-                Got it, can&apos;t wait!
+                Got it, sign me up!
               </button>
 
               <button
@@ -842,7 +859,7 @@ export default function Home() {
                 <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-gradient-to-br from-[#f3e8ff]/60 via-[#fdf4ff]/40 to-transparent rounded-full blur-[120px] pointer-events-none"></div>
 
                 <div className="max-w-6xl mx-auto px-6 relative z-10">
-                  <FadeUp className="text-center mb-12">
+                  <FadeUp className="text-center mb-16">
                     <div className="inline-block text-[#9254f3] text-[10px] font-extrabold tracking-[0.2em] uppercase mb-4">
                       Pricing
                     </div>
@@ -850,34 +867,22 @@ export default function Home() {
                       Simple, transparent pricing.
                     </h2>
                     <p className="text-lg text-slate-500 max-w-2xl mx-auto font-medium">
-                      Start for free. Upgrade when you&apos;re ready.
+                      Choose the perfect plan to run and grow your salon.
                     </p>
                   </FadeUp>
 
-                  {/* Billing Toggle */}
-                  <div className="flex justify-center mb-16">
-                    <div className="bg-[#f0e6ff]/50 backdrop-blur-md p-1.5 rounded-full flex items-center border border-[#baa4d3]/20 shadow-inner">
-                      <button className="bg-white text-[#37274d] px-6 py-2 rounded-full font-bold text-sm shadow-[0_2px_10px_rgba(101,47,231,0.1)] transition-colors">
-                        Monthly
-                      </button>
-                      <button className="text-[#37274d]/70 hover:text-[#37274d] px-6 py-2 rounded-full font-bold text-sm transition-colors flex items-center gap-2">
-                        Annual
-                        <span className="bg-white/60 text-[#9254f3] px-2 py-0.5 rounded-full text-[9px] font-black tracking-widest uppercase">20% off</span>
-                      </button>
-                    </div>
-                  </div>
-
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-5xl mx-auto">
 
-                    {/* Card 1: Essential */}
+                    {/* Card 1: Starter */}
                     <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] hover:-translate-y-1 transition-transform duration-300 flex flex-col">
-                      <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight">Essential</h3>
-                      <p className="text-[13px] text-slate-500 font-medium leading-relaxed mb-8">Start discovering and booking instantly.</p>
-                      <div className="mb-8">
-                        <span className="text-4xl font-extrabold text-[#37274d]">Free</span>
+                      <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight">Starter</h3>
+                      <p className="text-[13px] text-slate-500 font-medium leading-relaxed mb-8">Good enough to run, but limited to grow. For small salons / single owner setups.</p>
+                      <div className="mb-8 flex items-end gap-1">
+                        <span className="text-4xl font-extrabold text-[#37274d] tracking-tight">₹1499</span>
+                        <span className="text-[13px] text-slate-500 font-bold mb-1">/ month</span>
                       </div>
                       <ul className="space-y-4 mb-10 flex-1">
-                        {['Browse all professionals', '2 bookings per month', 'View ratings & reviews', 'Basic appointment reminders', 'Email support'].map((feature, i) => (
+                        {['Single shop', 'Basic booking management', 'Customer records', 'Limited staff (1–2)', 'Basic dashboard (today / weekly view)'].map((feature, i) => (
                           <li key={i} className="flex items-start gap-3">
                             <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
                             <span className="text-[14px] text-slate-700 font-medium">{feature}</span>
@@ -889,19 +894,19 @@ export default function Home() {
                       </button>
                     </div>
 
-                    {/* Card 2: Plus */}
+                    {/* Card 2: Growth */}
                     <div className="bg-gradient-to-br from-[#e4ccff] to-[#f6edff] border border-white p-8 rounded-[2rem] shadow-[0_15px_40px_rgb(101,47,231,0.15)] relative flex flex-col md:-translate-y-4">
-                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#9254f3] text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-lg shadow-[#9254f3]/30">
-                        Most Popular
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#9254f3] text-white px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-lg shadow-[#9254f3]/30 whitespace-nowrap">
+                        Most Important Plan
                       </div>
-                      <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight mt-2">Plus</h3>
-                      <p className="text-[13px] text-[#37274d]/70 font-medium leading-relaxed mb-8">For those who take their look seriously.</p>
+                      <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight mt-2">Growth</h3>
+                      <p className="text-[13px] text-[#37274d]/70 font-medium leading-relaxed mb-8">This is what you actually need to run your business properly. For serious salons with daily traffic.</p>
                       <div className="mb-8 flex items-end gap-1">
-                        <span className="text-4xl font-extrabold text-[#9254f3] tracking-tight">$9.99</span>
+                        <span className="text-4xl font-extrabold text-[#9254f3] tracking-tight">₹1999</span>
                         <span className="text-[13px] text-[#37274d]/60 font-bold mb-1">/ month</span>
                       </div>
                       <ul className="space-y-4 mb-10 flex-1">
-                        {['Unlimited bookings', 'Priority time slots', 'Smart reminders & alerts', 'Reschedule anytime', 'Stylist personal notes', 'Chat support'].map((feature, i) => (
+                        {['Everything in Starter', 'Unlimited bookings', 'Full staff management', 'Customer history + repeat tracking', 'Basic analytics (revenue, peak hours, etc.)', 'Priority support'].map((feature, i) => (
                           <li key={i} className="flex items-start gap-3">
                             <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
                             <span className="text-[14px] text-[#37274d]/90 font-bold">{feature}</span>
@@ -909,20 +914,20 @@ export default function Home() {
                         ))}
                       </ul>
                       <button className="w-full bg-gradient-to-r from-[#652fe7] to-[#a98fff] text-white py-3.5 rounded-[1rem] font-bold text-sm shadow-lg shadow-[#652fe7]/30 hover:opacity-90 transition-opacity">
-                        Start Free Trial
+                        Choose Growth
                       </button>
                     </div>
 
                     {/* Card 3: Pro */}
                     <div className="bg-white/60 backdrop-blur-2xl border border-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(146,84,243,0.04)] hover:-translate-y-1 transition-transform duration-300 flex flex-col">
                       <h3 className="text-2xl font-extrabold text-[#37274d] mb-2 tracking-tight">Pro</h3>
-                      <p className="text-[13px] text-slate-500 font-medium leading-relaxed mb-8">The complete premium experience.</p>
+                      <p className="text-[13px] text-slate-500 font-medium leading-relaxed mb-8">This helps you scale, not just operate. For high-volume / multi-branch / ambitious salons.</p>
                       <div className="mb-8 flex items-end gap-1">
-                        <span className="text-4xl font-extrabold text-[#37274d] tracking-tight">$19.99</span>
+                        <span className="text-4xl font-extrabold text-[#37274d] tracking-tight">₹2499</span>
                         <span className="text-[13px] text-slate-500 font-bold mb-1">/ month</span>
                       </div>
                       <ul className="space-y-4 mb-10 flex-1">
-                        {['Everything in Plus', 'Early access to new features', 'VIP priority support', 'Exclusive pre-launch slots', 'Dedicated account manager', 'Multiple profile management'].map((feature, i) => (
+                        {['Everything in Growth', 'Multi-branch support', 'Advanced analytics (trends, insights)', 'Marketing tools (offers, reminders)', 'Future integrations (payments, reports, exports)'].map((feature, i) => (
                           <li key={i} className="flex items-start gap-3">
                             <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
                             <span className="text-[14px] text-slate-700 font-medium">{feature}</span>
