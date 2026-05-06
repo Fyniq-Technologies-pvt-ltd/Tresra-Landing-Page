@@ -493,18 +493,18 @@ export default function Home() {
                     <StaggerItem>
                       <div className="flex items-center gap-6 pt-12 border-t border-outline-variant/10">
                         <div className="flex flex-col">
-                          <span className="text-2xl font-extrabold text-on-surface">10K+</span>
-                          <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Happy Clients</span>
+                          <span className="text-xl font-extrabold text-on-surface flex items-center gap-1.5"><span className="material-symbols-outlined text-primary text-[22px]">star</span> Premium</span>
+                          <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Curated Salons</span>
                         </div>
                         <div className="h-10 w-px bg-outline-variant/20"></div>
                         <div className="flex flex-col">
-                          <span className="text-2xl font-extrabold text-on-surface">450+</span>
-                          <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Top Barbers</span>
+                          <span className="text-xl font-extrabold text-on-surface flex items-center gap-1.5"><span className="material-symbols-outlined text-primary text-[22px]">verified</span> Verified</span>
+                          <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Top Experts</span>
                         </div>
                         <div className="h-10 w-px bg-outline-variant/20"></div>
                         <div className="flex flex-col">
-                          <span className="text-2xl font-extrabold text-on-surface">15+</span>
-                          <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Cities</span>
+                          <span className="text-xl font-extrabold text-on-surface flex items-center gap-1.5"><span className="material-symbols-outlined text-primary text-[22px]">timer_off</span> Zero</span>
+                          <span className="text-xs font-bold uppercase tracking-widest text-on-surface-variant/70">Wait Time</span>
                         </div>
                       </div>
                     </StaggerItem>
@@ -574,14 +574,14 @@ export default function Home() {
                       </div>
                     </div>
 
-                    {/* 4. 10K+ Happy Customers */}
+                    {/* 4. Early Access */}
                     <div className="hidden md:flex absolute bottom-[5%] left-[0%] z-30 animate-float-slow glass-card p-4 rounded-2xl items-center gap-4 w-52">
                       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                        <span className="material-symbols-outlined text-primary text-2xl" style={{ fontVariationSettings: "'wght' 600" }}>content_cut</span>
+                        <span className="material-symbols-outlined text-primary text-2xl" style={{ fontVariationSettings: "'wght' 600" }}>rocket_launch</span>
                       </div>
                       <div>
-                        <p className="text-lg font-black text-on-surface">10K+</p>
-                        <p className="text-[11px] font-bold text-on-surface-variant">Happy Customers</p>
+                        <p className="text-lg font-black text-on-surface">Live Now</p>
+                        <p className="text-[11px] font-bold text-on-surface-variant">Early Access Launch</p>
                       </div>
                     </div>
 
@@ -594,10 +594,10 @@ export default function Home() {
                         <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                         <span className="material-symbols-outlined text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                       </div>
-                      <p className="text-[11px] font-medium italic text-on-surface leading-tight mb-3">&quot;I always book Priya on Tresra. No more waiting!&quot;</p>
+                      <p className="text-[11px] font-medium italic text-on-surface leading-tight mb-3">&quot;I always book Dharam on Tresra. No more waiting!&quot;</p>
                       <div className="flex items-center gap-2">
                         <img alt="Reviewer" className="w-6 h-6 rounded-full" src="/assets/reviewer1.png" />
-                        <span className="text-[10px] font-bold text-on-surface-variant">— Sneha R.</span>
+                        <span className="text-[10px] font-bold text-on-surface-variant">— Ajay Singh.</span>
                       </div>
                     </div>
 
@@ -1179,7 +1179,8 @@ export default function Home() {
               </section>
 
               {/* Mobile App Section */}
-              {/* <section id="mobile-app" className="py-24 md:py-32 relative overflow-hidden bg-white">
+              {false && (
+                <section id="mobile-app" className="py-24 md:py-32 relative overflow-hidden bg-white">
                 
                 <div className="absolute inset-0 pointer-events-none opacity-[0.02] flex flex-wrap content-start z-0 overflow-hidden">
                   {Array.from({ length: 40 }).map((_, i) => (
@@ -1245,7 +1246,8 @@ export default function Home() {
                   </div>
 
                 </div>
-              </section> */}
+                </section>
+              )}
 
               {/* Final CTA Section */}
               <section id="get-started" className="py-16 md:py-24 bg-surface-container-low relative overflow-hidden">
@@ -1274,6 +1276,7 @@ export default function Home() {
                 <div className="absolute top-1/2 -left-16 -translate-y-1/2 w-48 h-48 bg-primary/10 rounded-full blur-[60px] pointer-events-none"></div>
                 <div className="absolute top-1/2 -right-16 -translate-y-1/2 w-48 h-48 bg-secondary/10 rounded-full blur-[60px] pointer-events-none"></div>
               </section>
+
             </main>
 
             {/* Footer (Anchor) */}
