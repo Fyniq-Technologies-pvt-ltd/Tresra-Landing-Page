@@ -70,8 +70,158 @@ const HoverCard = ({ children, className = "" }: { children: React.ReactNode; cl
   </motion.div>
 );
 
+type DialogVariant = "early-bird" | "customer-app" | "privacy" | "terms";
+
+type LegalSection = {
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+};
+
+type LegalDialog = {
+  badge: string;
+  icon: string;
+  title: string;
+  effectiveDate: string;
+  intro: string;
+  sections: LegalSection[];
+  primaryLabel: string;
+};
+
+const legalDialogs: Record<"privacy" | "terms", LegalDialog> = {
+  privacy: {
+    badge: "Privacy Policy",
+    icon: "policy",
+    title: "Tresra Privacy Policy",
+    effectiveDate: "Effective date: May 7, 2026",
+    intro:
+      "Tresra helps customers discover salons, choose professionals, and book appointments. This Privacy Policy explains what personal data we collect, why we collect it, how we use it, when we share it, and the choices available to users of our website, applications, and related services.",
+    primaryLabel: "I understand",
+    sections: [
+      {
+        heading: "1. Information we collect",
+        bullets: [
+          "Account details such as your name, mobile number, email address, city, and login credentials when you create an account or join a waitlist.",
+          "Booking information such as the salon, stylist, services selected, appointment date and time, cancellations, reschedules, and booking notes.",
+          "Device and usage data such as browser type, app version, IP address, approximate location, crash reports, and interaction patterns used to improve reliability and security.",
+          "Support and communication records when you contact Tresra, respond to promotions, or share feedback with us.",
+        ],
+      },
+      {
+        heading: "2. How we use your data",
+        bullets: [
+          "To create and manage your account, confirm bookings, send reminders, and support appointment changes.",
+          "To show relevant salons, professionals, service availability, and location-aware recommendations.",
+          "To operate the platform safely, detect misuse, prevent fraud, troubleshoot issues, and maintain service quality.",
+          "To improve product features, measure demand, understand usage trends, and communicate launches, offers, or updates where permitted by law.",
+        ],
+      },
+      {
+        heading: "3. When we share your data",
+        bullets: [
+          "With the salon or professional you book, so they can confirm, prepare for, and service your appointment.",
+          "With vendors and service providers that help us with hosting, analytics, notifications, customer support, and infrastructure operations, subject to confidentiality and security obligations.",
+          "With legal or regulatory authorities when required to comply with applicable law, court orders, or lawful enforcement requests.",
+          "As part of a merger, acquisition, restructuring, or transfer of business assets, subject to appropriate confidentiality and continuity protections.",
+        ],
+      },
+      {
+        heading: "4. Your choices and controls",
+        bullets: [
+          "You may review or update account information through the platform features available to you.",
+          "You can opt out of promotional messages, though transactional and service-related communications may still be sent when necessary.",
+          "You may disable location or notification permissions from your device settings, but some product features may work less effectively.",
+          "You may request deletion or closure of your account, subject to any records we must retain for security, fraud prevention, tax, audit, or dispute resolution purposes.",
+        ],
+      },
+      {
+        heading: "5. Retention, security, and children",
+        paragraphs: [
+          "We retain personal data only for as long as it is reasonably necessary for the purposes described in this policy, including account management, booking history, support, safety, and legal compliance. We use reasonable technical and organizational measures to protect information, but no internet-based service can guarantee absolute security.",
+          "Tresra is not intended for children who are not legally permitted to use our services independently under applicable law. If we learn that personal data was provided in violation of applicable rules, we may suspend the account and delete the data where required.",
+        ],
+      },
+      {
+        heading: "6. Policy updates and contact",
+        paragraphs: [
+          "We may update this Privacy Policy as our services, features, or legal obligations evolve. When changes are material, we will revise the effective date and may provide additional notice within the website, app, or other official Tresra channels.",
+          "For privacy-related questions, requests, or complaints, please contact Tresra through the official contact methods made available on our website or inside the application.",
+        ],
+      },
+    ],
+  },
+  terms: {
+    badge: "Terms of Service",
+    icon: "gavel",
+    title: "Tresra Terms of Service",
+    effectiveDate: "Effective date: May 7, 2026",
+    intro:
+      "These Terms of Service govern access to and use of Tresra's website, mobile applications, and related services by customers, visitors, and salon partners. By using Tresra, you agree to these terms and to any additional policies referenced within the platform.",
+    primaryLabel: "I understand",
+    sections: [
+      {
+        heading: "1. Platform role",
+        paragraphs: [
+          "Tresra provides a technology platform that helps users discover salons, view availability, choose professionals, and schedule appointments. Unless expressly stated otherwise, salon services are provided by independent salons or professionals, not by Tresra itself.",
+        ],
+      },
+      {
+        heading: "2. Eligibility and accounts",
+        bullets: [
+          "You must provide accurate, current information when creating an account or making a booking.",
+          "You are responsible for activity that occurs through your account and for keeping your login credentials secure.",
+          "Tresra may suspend or restrict access if information is false, misleading, unauthorized, or used in a way that harms the platform or other users.",
+        ],
+      },
+      {
+        heading: "3. Bookings, cancellations, and availability",
+        bullets: [
+          "Appointment slots shown on Tresra depend on information provided by salons, professionals, or system availability logic and may change without prior notice.",
+          "By placing a booking request or confirmation through Tresra, you authorize us to share relevant booking details with the selected salon or professional.",
+          "Cancellation, reschedule, late arrival, refund, deposit, or no-show rules may vary by salon, service type, campaign, or offer and may be displayed at the point of booking.",
+        ],
+      },
+      {
+        heading: "4. User conduct",
+        bullets: [
+          "You must not misuse the platform, interfere with bookings, attempt unauthorized access, scrape content at scale, impersonate another person, or use Tresra for unlawful purposes.",
+          "You must not post or transmit abusive, defamatory, fraudulent, or misleading material through reviews, support channels, or any user-generated feature.",
+        ],
+      },
+      {
+        heading: "5. Pricing, salon responsibility, and service outcomes",
+        paragraphs: [
+          "Pricing, service quality, hygiene standards, stylist performance, and the final service experience are primarily controlled by the salon or professional delivering the appointment. Tresra may display price and service information, but salons remain responsible for the accuracy of their listings unless otherwise stated.",
+          "Tresra may investigate disputes and support resolution, but we do not guarantee that every appointment, promotion, stylist preference, or salon representation will meet a user's expectations.",
+        ],
+      },
+      {
+        heading: "6. Intellectual property and platform rights",
+        bullets: [
+          "The Tresra brand, interface, software, layouts, graphics, and content are owned by or licensed to Tresra and are protected under applicable intellectual property laws.",
+          "You may use the platform only for personal or internal business use as permitted by these terms and may not copy, reverse engineer, redistribute, or exploit the service beyond that permission.",
+        ],
+      },
+      {
+        heading: "7. Disclaimers and limitation of liability",
+        paragraphs: [
+          "Tresra is provided on an as-available basis. To the maximum extent permitted by law, we disclaim warranties not expressly stated in these terms, including implied warranties of uninterrupted availability, merchantability, fitness for a particular purpose, or non-infringement.",
+          "To the extent permitted by law, Tresra will not be liable for indirect, incidental, special, consequential, or punitive damages, or for loss of profits, goodwill, data, or business opportunities arising from your use of the platform, third-party salon services, failed bookings, or service interruptions.",
+        ],
+      },
+      {
+        heading: "8. Suspension, termination, and governing law",
+        paragraphs: [
+          "We may suspend, restrict, or terminate access if you violate these terms, misuse the platform, create risk for other users, or if continued access is not commercially or legally feasible.",
+          "These terms are governed by the laws of India. Any dispute arising from or relating to the use of Tresra will be subject to the jurisdiction of courts competent to hear the matter in India, unless mandatory law requires otherwise.",
+        ],
+      },
+    ],
+  },
+};
+
 export default function Home() {
-  const [showDialog, setShowDialog] = useState(false);
+  const [dialogVariant, setDialogVariant] = useState<DialogVariant | null>(null);
   const [showSplash, setShowSplash] = useState(false);
   const [renderSplash, setRenderSplash] = useState(true);
   const [isReady, setIsReady] = useState(false);
@@ -99,6 +249,9 @@ export default function Home() {
   const navBg = useTransform(scrollY, [0, 80], ["rgba(255,255,255,0)", "rgba(255,255,255,0.85)"]);
   const navBlur = useTransform(scrollY, [0, 80], ["blur(0px)", "blur(14px)"]);
   const navShadow = useTransform(scrollY, [0, 80], ["0 0 0 rgba(0,0,0,0)", "0 1px 24px rgba(101,47,231,0.08)"]);
+  const legalDialog =
+    dialogVariant === "privacy" ? legalDialogs.privacy : dialogVariant === "terms" ? legalDialogs.terms : null;
+  const isLegalDialog = Boolean(legalDialog);
 
   return (
     <MotionConfig transition={{ type: "spring", damping: 20 }}>
@@ -116,18 +269,20 @@ export default function Home() {
           </div>
         )}
 
-        {/* Coming Soon Dialog */}
-        {showDialog && (
+        {/* Action Dialog */}
+        {dialogVariant && (
           <div
             className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-            onClick={() => setShowDialog(false)}
+            onClick={() => setDialogVariant(null)}
           >
             {/* Backdrop */}
             <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" />
 
             {/* Dialog Card */}
             <div
-              className="relative z-10 bg-white/80 backdrop-blur-2xl border border-white/60 rounded-[2rem] shadow-2xl shadow-primary/20 max-w-md w-full p-8 flex flex-col items-center text-center"
+              className={`relative z-10 bg-white/80 backdrop-blur-2xl border border-white/60 rounded-[2rem] shadow-2xl shadow-primary/20 w-full p-8 flex flex-col ${
+                isLegalDialog ? "max-w-4xl max-h-[88vh] items-start text-left overflow-hidden" : "max-w-md items-center text-center"
+              }`}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Glow blob */}
@@ -135,51 +290,131 @@ export default function Home() {
 
               {/* Icon */}
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-[#a78bfa] flex items-center justify-center mb-5 shadow-lg shadow-primary/30">
-                <span className="material-symbols-outlined text-white text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>rocket_launch</span>
+                <span className="material-symbols-outlined text-white text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>
+                  {legalDialog ? legalDialog.icon : "rocket_launch"}
+                </span>
               </div>
 
               {/* Badge */}
               <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase mb-4">
-                Coming Soon
+                {legalDialog ? legalDialog.badge : dialogVariant === "customer-app" ? "Launching In June" : "Coming Soon"}
               </div>
 
-              <h2 className="text-2xl font-black text-on-surface mb-3 tracking-tight">
-                Early Bird Offer 🚀
+              <h2 className={`font-black text-on-surface mb-3 tracking-tight ${isLegalDialog ? "text-3xl" : "text-2xl"}`}>
+                {legalDialog ? legalDialog.title : dialogVariant === "customer-app" ? "Tresra Customer App" : "Early Bird Offer"}
               </h2>
-              <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
-                Register between <strong>May 7th and June 7th</strong> to secure our Early Bird plan (First 30–50 salons only!).
-              </p>
 
-              <div className="bg-primary/5 rounded-xl p-4 mb-4 text-left w-full border border-primary/10">
-                <ul className="text-sm text-on-surface-variant space-y-2">
-                  <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
-                    <span><strong>30 Days Free</strong> (Strict)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
-                    <span>Then just <strong>₹999/month</strong> locked forever</span>
-                  </li>
-                </ul>
-              </div>
+              {legalDialog ? (
+                <>
+                  <div className="w-full flex-1 min-h-0 bg-primary/5 rounded-2xl border border-primary/10 p-5 md:p-6 mb-4 overflow-y-auto">
+                    <p className="text-sm md:text-[15px] text-on-surface-variant leading-relaxed mb-6">
+                      {legalDialog.intro}
+                    </p>
+                    <div className="space-y-6">
+                      {legalDialog.sections.map((section) => (
+                        <section key={section.heading} className="space-y-3">
+                          <h3 className="text-base md:text-lg font-extrabold text-on-surface">{section.heading}</h3>
+                          {section.paragraphs?.map((paragraph) => (
+                            <p key={paragraph} className="text-sm md:text-[15px] text-on-surface-variant leading-relaxed">
+                              {paragraph}
+                            </p>
+                          ))}
+                          {section.bullets && (
+                            <ul className="space-y-2.5">
+                              {section.bullets.map((bullet) => (
+                                <li key={bullet} className="flex items-start gap-2.5 text-sm md:text-[15px] text-on-surface-variant leading-relaxed">
+                                  <span className="material-symbols-outlined text-primary text-[18px] mt-0.5">check_circle</span>
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </section>
+                      ))}
+                    </div>
+                  </div>
 
-              <p className="text-sm font-bold text-primary mb-6">
-                Onboarding starts 7th May 2026.
-              </p>
+                  <p className="text-sm font-bold text-primary mb-6">
+                    {legalDialog.effectiveDate}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
+                    {dialogVariant === "customer-app" ? (
+                      <>
+                        Our customer mobile app is launching in <strong>June 2026</strong>. Be first in line to book salons, choose your stylist, and manage appointments right from your phone.
+                      </>
+                    ) : (
+                      <>
+                        Register between <strong>May 7th and June 7th</strong> to secure our Early Bird plan (First 30-50 salons only!).
+                      </>
+                    )}
+                  </p>
+
+                  <div className="bg-primary/5 rounded-xl p-4 mb-4 text-left w-full border border-primary/10">
+                    <ul className="text-sm text-on-surface-variant space-y-2">
+                      {dialogVariant === "customer-app" ? (
+                        <>
+                          <li className="flex items-start gap-2">
+                            <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+                            <span>Discover nearby salons and book in a few taps</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+                            <span>Get launch access as soon as the app goes live in June</span>
+                          </li>
+                        </>
+                      ) : (
+                        <>
+                          <li className="flex items-start gap-2">
+                            <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+                            <span><strong>6 Months Free Trial</strong></span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
+                            <span>Then just <strong>Rs.999/month</strong> locked forever</span>
+                          </li>
+                        </>
+                      )}
+                    </ul>
+                  </div>
+
+                  <p className="text-sm font-bold text-primary mb-6">
+                    {dialogVariant === "customer-app" ? "Customer app launch: June 2026." : "Onboarding starts 7th May 2026."}
+                  </p>
+                </>
+              )}
 
               {/* Divider */}
               <div className="w-full h-px bg-outline-variant/20 mb-6" />
 
               {/* Close button */}
-              <button
-                onClick={() => setShowDialog(false)}
-                className="w-full bg-primary text-white py-3 rounded-full font-bold text-sm shadow-lg shadow-primary/30 hover:opacity-90 active:scale-95 transition-all"
-              >
-                Got it, sign me up!
-              </button>
+              {legalDialog ? (
+                <button
+                  onClick={() => setDialogVariant(null)}
+                  className="block w-full bg-primary text-white py-3 rounded-full font-bold text-sm text-center shadow-lg shadow-primary/30 hover:opacity-90 active:scale-95 transition-all"
+                >
+                  {legalDialog.primaryLabel}
+                </button>
+              ) : dialogVariant === "customer-app" ? (
+                <button
+                  onClick={() => setDialogVariant(null)}
+                  className="block w-full bg-primary text-white py-3 rounded-full font-bold text-sm text-center shadow-lg shadow-primary/30 hover:opacity-90 active:scale-95 transition-all"
+                >
+                  Okay, I&apos;ll wait for launch
+                </button>
+              ) : (
+                <a
+                  href="https://app.tresra.com"
+                  className="block w-full bg-primary text-white py-3 rounded-full font-bold text-sm text-center shadow-lg shadow-primary/30 hover:opacity-90 active:scale-95 transition-all"
+                >
+                  Got it, sign me up!
+                </a>
+              )}
 
               <button
-                onClick={() => setShowDialog(false)}
+                onClick={() => setDialogVariant(null)}
                 className="mt-3 text-xs text-on-surface-variant hover:text-primary transition-colors font-medium"
               >
                 Close
@@ -204,7 +439,7 @@ export default function Home() {
                   <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#categories">Categories</a>
                   <a className="text-slate-600 hover:text-purple-600 transition-colors font-medium" href="#reviews">Reviews</a>
                 </div>
-                <button onClick={() => setShowDialog(true)} className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold scale-95 active:scale-90 transition-transform hover:opacity-80">
+                <button onClick={() => setDialogVariant("early-bird")} className="bg-primary text-on-primary px-6 py-2.5 rounded-full font-semibold scale-95 active:scale-90 transition-transform hover:opacity-80">
                   Get Started
                 </button>
               </div>
@@ -247,7 +482,7 @@ export default function Home() {
                     </StaggerItem>
                     <StaggerItem>
                       <div className="flex flex-wrap gap-4 pt-4">
-                        <button onClick={() => setShowDialog(true)} className="bg-primary text-white px-8 py-2 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                        <button onClick={() => setDialogVariant("customer-app")} className="bg-primary text-white px-8 py-2 rounded-full font-bold text-lg shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
                           Book Now
                         </button>
                         <a href="#why-tresra" className="bg-surface-container-lowest text-on-surface border border-outline-variant/30 px-8 py-2 rounded-full font-bold text-lg hover:bg-surface-container transition-all inline-block">
@@ -944,8 +1179,8 @@ export default function Home() {
               </section>
 
               {/* Mobile App Section */}
-              <section id="mobile-app" className="py-24 md:py-32 relative overflow-hidden bg-white">
-                {/* Faint T watermarks in grid pattern */}
+              {/* <section id="mobile-app" className="py-24 md:py-32 relative overflow-hidden bg-white">
+                
                 <div className="absolute inset-0 pointer-events-none opacity-[0.02] flex flex-wrap content-start z-0 overflow-hidden">
                   {Array.from({ length: 40 }).map((_, i) => (
                     <div key={i} className="w-[20%] lg:w-[10%] aspect-square flex items-center justify-center">
@@ -956,7 +1191,7 @@ export default function Home() {
 
                 <div className="max-w-6xl mx-auto px-6 relative z-10 flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
 
-                  {/* Left Content */}
+                  
                   <FadeUp className="flex-1 text-center lg:text-left">
                     <h2 className="text-4xl lg:text-[3.5rem] leading-[1.1] font-extrabold tracking-tight text-[#37274d] mb-6">
                       Control your <span className="text-[#652fe7]">grooming experience</span> from your pocket.
@@ -966,7 +1201,7 @@ export default function Home() {
                     </p>
 
                     <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-                      {/* App Store Button Mock */}
+                      
                       <button className="bg-white/90 backdrop-blur-md border border-[#baa4d3]/20 shadow-[0_8px_30px_rgb(146,84,243,0.08)] px-5 py-3 rounded-2xl flex items-center gap-3 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.12)] transition-all group">
                         <span className="text-3xl text-[#37274d]">
                           <svg viewBox="0 0 384 512" width="24" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
@@ -977,7 +1212,7 @@ export default function Home() {
                         </div>
                       </button>
 
-                      {/* Google Play Button Mock */}
+                      
                       <button className="bg-white/90 backdrop-blur-md border border-[#baa4d3]/20 shadow-[0_8px_30px_rgb(146,84,243,0.08)] px-5 py-3 rounded-2xl flex items-center gap-3 hover:-translate-y-1 hover:shadow-[0_15px_40px_rgb(146,84,243,0.12)] transition-all group">
                         <span className="text-3xl text-slate-700">
                           <svg viewBox="0 0 512 512" width="24" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z" /></svg>
@@ -990,27 +1225,27 @@ export default function Home() {
                     </div>
                   </FadeUp>
 
-                  {/* Right Content : The iPhone Mockup */}
+                  
                   <div className="flex-1 w-full flex justify-center lg:justify-end relative">
-                    {/* Phone Frame */}
+                   
                     <div className="relative w-[300px] sm:w-[320px] aspect-[390/844] bg-[#1a1a1a] rounded-[3.5rem] p-3 shadow-[0_30px_80px_rgba(30,10,60,0.15)] border-4 border-slate-800 z-20 overflow-hidden transform lg:rotate-2 hover:rotate-0 transition-transform duration-700">
-                      {/* Internal Screen wrapping app */}
+                      
                       <div className="bg-[#111116] w-full h-full rounded-[2.5rem] overflow-hidden relative flex flex-col">
-                        {/* Dynamic Island Mock */}
+                       
                         <div className="absolute top-3 left-1/2 -translate-x-1/2 w-[7rem] h-[1.75rem] bg-black rounded-full z-50"></div>
 
-                        {/* Custom Inserted UI Image */}
+                        
                         <img src="/mock-app.png" alt="Tresra Discover Salons App Interface" className="w-full h-full object-cover object-top z-0" />
                       </div>
                     </div>
 
-                    {/* Aesthetic Blobs behind phone */}
+                    
                     <div className="absolute top-1/4 -right-10 w-64 h-64 bg-gradient-to-bl from-[#dfc8ff]/60 to-[#fdf4ff]/20 blur-[80px] rounded-full z-10 pointer-events-none"></div>
                     <div className="absolute bottom-1/4 -left-10 w-64 h-64 bg-gradient-to-tr from-[#dfc8ff]/60 to-[#fcf4ff] blur-[80px] rounded-full z-10 pointer-events-none"></div>
                   </div>
 
                 </div>
-              </section>
+              </section> */}
 
               {/* Final CTA Section */}
               <section id="get-started" className="py-16 md:py-24 bg-surface-container-low relative overflow-hidden">
@@ -1026,7 +1261,7 @@ export default function Home() {
                     From quick trims to full styling sessions — people trust Tresra to plan their time better. No more lines, no more waiting, just your look, on your schedule.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                    <button onClick={() => setShowDialog(true)} className="group bg-primary text-white px-8 py-4 rounded-full font-black text-lg shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
+                    <button onClick={() => setDialogVariant("early-bird")} className="group bg-primary text-white px-8 py-4 rounded-full font-black text-lg shadow-2xl shadow-primary/40 hover:scale-105 active:scale-95 transition-all flex items-center gap-2">
                       Get Started with Tresra
                     </button>
                     <p className="text-xs font-bold text-on-surface-variant flex items-center gap-1.5">
@@ -1049,10 +1284,10 @@ export default function Home() {
                   <p className="text-slate-500 text-sm">© 2026 Tresra. All rights reserved.</p>
                 </div>
                 <div className="flex gap-8 text-sm">
-                  <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Privacy Policy</a>
-                  <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Terms of Service</a>
-                  <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Contact</a>
-                  <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Support</a>
+                  <button onClick={() => setDialogVariant("privacy")} className="text-slate-500 hover:text-purple-500 transition-colors" type="button">Privacy Policy</button>
+                  <button onClick={() => setDialogVariant("terms")} className="text-slate-500 hover:text-purple-500 transition-colors" type="button">Terms of Service</button>
+                  {/* <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Contact</a>
+                  <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Support</a> */}
                 </div>
               </div>
             </footer>
