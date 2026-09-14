@@ -297,11 +297,11 @@ export default function Home() {
 
               {/* Badge */}
               <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase mb-4">
-                {legalDialog ? legalDialog.badge : dialogVariant === "customer-app" ? "Launching In June" : "Coming Soon"}
+                {legalDialog ? legalDialog.badge : dialogVariant === "customer-app" ? "Launching In June" : "Shop Dashboard Is Live"}
               </div>
 
               <h2 className={`font-black text-on-surface mb-3 tracking-tight ${isLegalDialog ? "text-3xl" : "text-2xl"}`}>
-                {legalDialog ? legalDialog.title : dialogVariant === "customer-app" ? "Tresra Customer App" : "Early Bird Offer"}
+                {legalDialog ? legalDialog.title : dialogVariant === "customer-app" ? "Tresra Customer App" : "Early Bird: ₹999/month, forever"}
               </h2>
 
               {legalDialog ? (
@@ -347,7 +347,7 @@ export default function Home() {
                       </>
                     ) : (
                       <>
-                        Register between <strong>May 7th and June 7th</strong> to secure our Early Bird plan (First 30-50 salons only!).
+                        Your shop dashboard is live and completely free to use right now. Register today as an Early Bird to lock in the <strong>Growth Plan at ₹999/month, forever.</strong>
                       </>
                     )}
                   </p>
@@ -369,11 +369,11 @@ export default function Home() {
                         <>
                           <li className="flex items-start gap-2">
                             <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
-                            <span><strong>6 Months Free Trial</strong></span>
+                            <span><strong>Pay nothing during early access</strong></span>
                           </li>
                           <li className="flex items-start gap-2">
                             <span className="material-symbols-outlined text-green-500 text-[18px]">check_circle</span>
-                            <span>Then just <strong>Rs.999/month</strong> locked forever</span>
+                            <span>Keep the <strong>₹999/month Growth Plan</strong> price for life</span>
                           </li>
                         </>
                       )}
@@ -381,7 +381,7 @@ export default function Home() {
                   </div>
 
                   <p className="text-sm font-bold text-primary mb-6">
-                    {dialogVariant === "customer-app" ? "Customer app launch: June 2026." : "Onboarding starts 7th May 2026."}
+                    {dialogVariant === "customer-app" ? "Customer app launch: June 2026." : "No payment required today."}
                   </p>
                 </>
               )}
@@ -409,7 +409,7 @@ export default function Home() {
                   href="https://app.tresra.com"
                   className="block w-full bg-primary text-white py-3 rounded-full font-bold text-sm text-center shadow-lg shadow-primary/30 hover:opacity-90 active:scale-95 transition-all"
                 >
-                  Got it, sign me up!
+                  Go to Dashboard
                 </a>
               )}
 
@@ -1116,7 +1116,7 @@ export default function Home() {
                         <span className="text-4xl font-extrabold text-[#37274d] tracking-tight">₹1499</span>
                         <span className="text-[13px] text-slate-500 font-bold mb-1">/ month</span>
                       </div>
-                      <ul className="space-y-4 mb-10 flex-1">
+                      <ul className="space-y-4 flex-1">
                         {['Single shop', 'Basic booking management', 'Customer records', 'Limited staff (1–2)', 'Basic dashboard (today / weekly view)'].map((feature, i) => (
                           <li key={i} className="flex items-start gap-3">
                             <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
@@ -1124,9 +1124,6 @@ export default function Home() {
                           </li>
                         ))}
                       </ul>
-                      <button className="w-full bg-[#f4effc] hover:bg-[#ebe1f8] text-[#37274d] py-3.5 rounded-[1rem] font-bold text-sm transition-colors shadow-sm">
-                        Get Started
-                      </button>
                     </div>
 
                     {/* Card 2: Growth */}
@@ -1140,7 +1137,7 @@ export default function Home() {
                         <span className="text-4xl font-extrabold text-[#9254f3] tracking-tight">₹1999</span>
                         <span className="text-[13px] text-[#37274d]/60 font-bold mb-1">/ month</span>
                       </div>
-                      <ul className="space-y-4 mb-10 flex-1">
+                      <ul className="space-y-4 flex-1">
                         {['Everything in Starter', 'Unlimited bookings', 'Full staff management', 'Customer history + repeat tracking', 'Basic analytics (revenue, peak hours, etc.)', 'Priority support'].map((feature, i) => (
                           <li key={i} className="flex items-start gap-3">
                             <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
@@ -1148,9 +1145,6 @@ export default function Home() {
                           </li>
                         ))}
                       </ul>
-                      <button className="w-full bg-gradient-to-r from-[#652fe7] to-[#a98fff] text-white py-3.5 rounded-[1rem] font-bold text-sm shadow-lg shadow-[#652fe7]/30 hover:opacity-90 transition-opacity">
-                        Choose Growth
-                      </button>
                     </div>
 
                     {/* Card 3: Pro */}
@@ -1161,7 +1155,7 @@ export default function Home() {
                         <span className="text-4xl font-extrabold text-[#37274d] tracking-tight">₹2499</span>
                         <span className="text-[13px] text-slate-500 font-bold mb-1">/ month</span>
                       </div>
-                      <ul className="space-y-4 mb-10 flex-1">
+                      <ul className="space-y-4 flex-1">
                         {['Everything in Growth', 'Multi-branch support', 'Advanced analytics (trends, insights)', 'Marketing tools (offers, reminders)', 'Future integrations (payments, reports, exports)'].map((feature, i) => (
                           <li key={i} className="flex items-start gap-3">
                             <span className="material-symbols-outlined text-[#9254f3] text-[16px] font-bold mt-0.5">check</span>
@@ -1169,9 +1163,6 @@ export default function Home() {
                           </li>
                         ))}
                       </ul>
-                      <button className="w-full bg-[#f4effc] hover:bg-[#ebe1f8] text-[#37274d] py-3.5 rounded-[1rem] font-bold text-sm transition-colors shadow-sm">
-                        Go Pro
-                      </button>
                     </div>
 
                   </div>
