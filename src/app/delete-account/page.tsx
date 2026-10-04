@@ -88,6 +88,9 @@ export default function DeleteAccountPage() {
             <Link href="/delete-account" className="text-slate-500 transition-colors hover:text-purple-500">
               Delete account
             </Link>
+            <Link href="/contact-us" className="text-slate-500 transition-colors hover:text-purple-500">
+              Contact us
+            </Link>
           </div>
         </div>
       </footer>

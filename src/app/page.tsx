@@ -1084,6 +1084,7 @@ export default function Home() {
                   <Link href="/privacy" className="text-slate-500 hover:text-purple-500 transition-colors">Privacy Policy</Link>
                   <Link href="/terms" className="text-slate-500 hover:text-purple-500 transition-colors">Terms of Service</Link>
                   <Link href="/delete-account" className="text-slate-500 hover:text-purple-500 transition-colors">Delete account</Link>
+                  <Link href="/contact-us" className="text-slate-500 hover:text-purple-500 transition-colors">Contact us</Link>
                   {/* <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Contact</a>
                   <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Support</a> */}
                 </div>

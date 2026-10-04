@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import type { LegalDocument } from "@/lib/legal";
+import { ContactForm } from "@/components/ContactForm";
 
-export function LegalPage({ document }: { document: LegalDocument }) {
+export const metadata: Metadata = {
+  title: "Contact us | Tresra",
+  description: "Send Tresra a message with your name, phone number, and question. No account is required.",
+};
+
+export default function ContactUsPage() {
   return (
     <div className="min-h-screen bg-background text-on-surface">
       <header className="sticky top-0 z-50 border-b border-purple-200/15 bg-white/80 backdrop-blur-md">
@@ -17,33 +23,15 @@ export function LegalPage({ document }: { document: LegalDocument }) {
 
       <main className="mx-auto max-w-3xl px-6 py-12 md:py-16">
         <p className="mb-4 inline-flex rounded-full bg-primary/10 px-3 py-1 text-[10px] font-extrabold tracking-widest text-primary uppercase">
-          {document.badge}
+          Contact
         </p>
-        <h1 className="mb-3 text-4xl font-black tracking-tight md:text-5xl">{document.title}</h1>
-        <p className="mb-8 text-sm font-bold text-primary">{document.effectiveDate}</p>
-        <p className="mb-10 text-base leading-relaxed text-on-surface-variant md:text-lg">{document.intro}</p>
+        <h1 className="mb-4 text-4xl font-black tracking-tight md:text-5xl">Contact us</h1>
+        <p className="text-base leading-relaxed text-on-surface-variant md:text-lg">
+          Tell us who you are, how to reach you, and what you need. You can send this from a browser. You do not need an account.
+        </p>
 
-        <div className="space-y-8">
-          {document.sections.map((section) => (
-            <section key={section.heading} className="space-y-3">
-              <h2 className="text-xl font-extrabold">{section.heading}</h2>
-              {section.paragraphs?.map((paragraph) => (
-                <p key={paragraph} className="text-sm leading-relaxed text-on-surface-variant md:text-[15px]">
-                  {paragraph}
-                </p>
-              ))}
-              {section.bullets && (
-                <ul className="space-y-2.5">
-                  {section.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-start gap-2.5 text-sm leading-relaxed text-on-surface-variant md:text-[15px]">
-                      <span className="material-symbols-outlined mt-0.5 text-[18px] text-primary">check_circle</span>
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </section>
-          ))}
+        <div className="mt-10">
+          <ContactForm />
         </div>
       </main>
 
