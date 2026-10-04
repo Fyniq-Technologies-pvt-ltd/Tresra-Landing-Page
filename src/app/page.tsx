@@ -1080,9 +1080,10 @@ export default function Home() {
                   <img src="/logo.png" alt="Tresra Logo" className="h-8 w-auto mb-3" />
                   <p className="text-slate-500 text-sm">© 2026 Tresra. All rights reserved.</p>
                 </div>
-                <div className="flex gap-8 text-sm">
+                <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm justify-center">
                   <Link href="/privacy" className="text-slate-500 hover:text-purple-500 transition-colors">Privacy Policy</Link>
                   <Link href="/terms" className="text-slate-500 hover:text-purple-500 transition-colors">Terms of Service</Link>
+                  <Link href="/delete-account" className="text-slate-500 hover:text-purple-500 transition-colors">Delete account</Link>
                   {/* <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Contact</a>
                   <a className="text-slate-500 hover:text-purple-500 transition-colors" href="#">Support</a> */}
                 </div>

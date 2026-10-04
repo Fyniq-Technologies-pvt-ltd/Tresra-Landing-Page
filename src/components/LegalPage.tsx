@@ -50,12 +50,15 @@ export function LegalPage({ document }: { document: LegalDocument }) {
       <footer className="mt-8 bg-purple-50">
         <div className="mx-auto flex max-w-3xl flex-col items-start justify-between gap-6 px-6 py-10 md:flex-row md:items-center">
           <p className="text-sm text-slate-500">© 2026 Tresra. All rights reserved.</p>
-          <div className="flex gap-8 text-sm">
+          <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
             <Link href="/privacy" className="text-slate-500 transition-colors hover:text-purple-500">
               Privacy Policy
             </Link>
             <Link href="/terms" className="text-slate-500 transition-colors hover:text-purple-500">
               Terms of Service
+            </Link>
+            <Link href="/delete-account" className="text-slate-500 transition-colors hover:text-purple-500">
+              Delete account
             </Link>
           </div>
         </div>
